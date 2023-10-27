@@ -1,0 +1,17 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode", /// TSX auto format on save Prettier
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": { /// TSX auto format on save ESLint
+          "source.fixAll.eslint": true
+        }
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode", /// TSX auto format on save Prettier
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": { /// TSX auto format on save ESLint
+          "source.fixAll.eslint": true
+        }
+      },
+}
