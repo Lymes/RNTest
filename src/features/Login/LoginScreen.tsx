@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   Keyboard,
@@ -8,104 +8,84 @@ import {
   TextInput,
 } from 'react-native';
 import {styles} from './styles';
-import TextBox from 'react-native-password-eye';
-import {useNavigation} from '@react-navigation/native';
+import TextBox from '../../components/TextBox/TextBox';
 import {RootStackParamList} from '../navigation/RootStackPrams';
 import {Button} from '@react-native-material/core';
 import * as Keychain from 'react-native-keychain';
 import {LoginViewModel} from './LoginViewModel';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-interface LoginProps {
-  navigation: any;
-}
+const viewModel = new LoginViewModel();
+type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
-class LoginScreen extends Component<LoginProps> {
-  viewModel = new LoginViewModel();
+export default function LoginScreen({navigation}: LoginProps) {
+  const [hasCredentials, setGotCredentials] = useState<boolean>(false);
 
-  constructor(props: LoginProps | Readonly<LoginProps>) {
-    super(props);
-  }
+  useEffect(() => {
+    (async () => {
+      try {
+        await viewModel.initLogin();
+        setGotCredentials(true);
+      } catch (err) {
+        console.error(err);
+      }
+    })();
+  }, [viewModel.initLogin]);
 
-  componentDidMount() {
-    this.viewModel
-      .initLogin()
-      .then(logged => {
-        if (logged) {
-          console.log('Update');
-          this.forceUpdate();
-        }
-      })
-      .catch(() => {});
-  }
-
-  componentWillUnmount() {}
-
-  render() {
-    console.log('Rendered!');
-    const {navigation} = this.props;
-    return (
-      <KeyboardAvoidingView
-        style={styles.loginPage}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        enabled>
-        <SafeAreaView>
-          <Text style={styles.loginTitle}>IRIS</Text>
-          <TextInput
-            style={styles.input}
-            onChangeText={(text: string) => {
-              this.viewModel.username = text;
-            }}
-            defaultValue={this.viewModel.username}
-            placeholder="Username"
-            onSubmitEditing={() => {
-              Keyboard.dismiss();
-            }}
-          />
-          <TextBox
-            containerStyles={styles.inputBox}
-            onChangeText={(text: string) => {
-              this.viewModel.password = text;
-            }}
-            placeholder="Password"
-            value={(): string => {
-              console.log('cazzzz:', this.viewModel.password);
-              return this.viewModel.password;
-            }}
-            defaultValue={this.viewModel.password}
-            secureTextEntry={true}
-            returnKeyType="go"
-            onSubmitEditing={() => {
-              Keyboard.dismiss();
-            }}
-            iconFamily={'MaterialCommunityIcons'}
-          />
-          <Button
-            style={styles.button}
-            title="Login"
-            onPress={async () => {
-              await Keychain.setGenericPassword(
-                this.viewModel.username,
-                this.viewModel.password,
-              );
-              Keyboard.dismiss();
-              this.viewModel.doLogin();
-            }}
-          />
-          <Button
-            style={styles.button}
-            title="Settings"
-            onPress={() => {
-              Keyboard.dismiss();
-              navigation.navigate('Settings');
-            }}
-          />
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    );
-  }
-}
-
-export default function () {
-  const navigation = useNavigation<RootStackParamList>();
-  return <LoginScreen navigation={navigation} />;
+  console.log('RENDER!');
+  return (
+    <KeyboardAvoidingView
+      style={styles.loginPage}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      enabled>
+      <SafeAreaView>
+        <Text style={styles.loginTitle}>IRIS</Text>
+        <TextInput
+          style={styles.input}
+          onChangeText={(text: string) => {
+            viewModel.username = text;
+          }}
+          defaultValue={viewModel.username}
+          placeholder="Username"
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+          }}
+        />
+        <TextBox
+          containerStyles={styles.inputBox}
+          onChangeText={(text: string) => {
+            viewModel.password = text;
+          }}
+          placeholder="Password"
+          defaultValue={viewModel.password}
+          secureTextEntry={true}
+          returnKeyType="go"
+          onSubmitEditing={() => {
+            Keyboard.dismiss();
+          }}
+          iconFamily={'MaterialCommunityIcons'}
+        />
+        <Button
+          style={styles.button}
+          title="Login"
+          onPress={async () => {
+            await Keychain.setGenericPassword(
+              viewModel.username,
+              viewModel.password,
+            );
+            Keyboard.dismiss();
+            viewModel.doLogin();
+          }}
+        />
+        <Button
+          style={styles.button}
+          title="Settings"
+          onPress={() => {
+            Keyboard.dismiss();
+            navigation.navigate('Settings');
+          }}
+        />
+      </SafeAreaView>
+    </KeyboardAvoidingView>
+  );
 }

@@ -29,12 +29,16 @@ export class LoginViewModel {
               text: 'Yes',
               onPress: async () => {
                 console.log('OK Pressed');
-                RNUserDefaults.set('useBiometric', true);
+                RNUserDefaults.set('useBiometric', 'true');
               },
             },
           ],
         );
+      } else {
+        console.log('No sensors available.');
       }
+    } else {
+      console.log('Already choosen to use Biometrics.');
     }
     console.log('LOGIN', this.username, this.password);
   }
@@ -42,20 +46,24 @@ export class LoginViewModel {
   async initLogin(): Promise<boolean> {
     let value = await RNUserDefaults.get('useBiometric');
     if (value !== 'true') {
+      console.log('Not supposed to use Biometric.');
       return false;
     }
     const {available} = await this.rnBiometrics.isSensorAvailable();
     if (!available) {
+      console.log('Biometric sensors not available.');
       return false;
     }
     const {success} = await this.rnBiometrics.simplePrompt({
       promptMessage: 'Confirm your identity',
     });
     if (!success) {
+      console.log('Refused to use Biometric.');
       return false;
     }
     const credentials = await Keychain.getGenericPassword();
     if (!credentials) {
+      console.log('Cannot retrieve credentials.');
       return false;
     }
     console.log('Got credentials:', credentials.username, credentials.password);

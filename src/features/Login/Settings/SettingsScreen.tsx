@@ -1,166 +1,109 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import {
   Platform,
   KeyboardAvoidingView,
   Text,
   TextInput,
-  ViewStyle,
   View,
   ActivityIndicator,
 } from 'react-native';
 import {styles} from './styles';
 import {Button} from '@react-native-material/core';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {useNavigation} from '@react-navigation/native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/RootStackPrams';
 import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
-import Zeroconf from 'react-native-zeroconf';
 import RNUserDefaults from 'rn-user-defaults';
+import {SettingsViewModel} from './SettingsViewModel';
 
-type settingsScreenProp = NativeStackNavigationProp<
-  RootStackParamList,
-  'Settings'
->;
+type SettingsProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
-function SettingsScreen() {
-  const manual = 'manual';
-  const cloud = 'cloud';
-  const discovery = 'discovery';
+const viewModel = new SettingsViewModel();
 
-  const navigation = useNavigation<settingsScreenProp>();
-  const [ipAddress, setIpAddress] = useState<string | undefined>('192.168.1.1');
+export default function SettingsScreen({navigation}: SettingsProps) {
+  const [address, setAddress] = useState<string | undefined>('192.168.1.1');
   const [addressLabel, setAddressLabel] = useState<string | undefined>(
     'IP address',
   );
-  const [selectedId, setSelectedId] = useState<string | undefined>(manual);
+  const [loginMethod, setLoginMethod] = useState<string | undefined>(
+    viewModel.LOGIN_MAUAL,
+  );
   const [isScanning, setScanning] = useState<boolean>(false);
 
-  interface BJService {
-    port: number;
-    txt: {
-      host: string;
-    };
-  }
-
-  const zeroconf = new Zeroconf();
-  zeroconf.on('resolved', (service: any) => {
-    zeroconf.stop();
-    let srvString: string = JSON.stringify(service, null, 2);
-    let obj: BJService = JSON.parse(srvString);
-    setAddressLabel('IP address detected');
-    setIpAddress(obj.txt.host);
+  viewModel.onAddressResolved = (address: string) => {
+    setAddressLabel('Address found');
+    setAddress(address);
     setScanning(false);
-  });
-
-  useFocusEffect(
-    React.useCallback(() => {
-      console.log('CAZZZZ');
-    }, []),
-  );
-
-  const radioButtons: RadioButtonProps[] = useMemo(
-    () => [
-      {
-        id: cloud,
-        label: 'Use Cloud',
-        value: cloud,
-        labelStyle: styles.radioLabels,
-      },
-      {
-        id: manual,
-        label: 'Manual',
-        value: manual,
-        labelStyle: styles.radioLabels,
-      },
-      {
-        id: discovery,
-        label: 'Discovery',
-        value: discovery,
-        labelStyle: styles.radioLabels,
-      },
-    ],
-    [],
-  );
-
-  var inputStyle = function (): ViewStyle {
-    return {
-      borderColor: selectedId === manual ? '#9c9c9c' : '#ffffff',
-      elevation: selectedId === manual ? 5 : 0,
-    };
   };
 
   var scanAddress = function () {
     setScanning(true);
     setAddressLabel('Scanning...');
-    zeroconf.scan('icc', 'tcp', 'local.');
+    viewModel.startScan();
   };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      (async () => {
+        try {
+          const ipAddress = await RNUserDefaults.get('ipAddress');
+          setAddress(ipAddress);
+          const loginMethod = await RNUserDefaults.get('loginMethod');
+          setLoginMethod(loginMethod);
+          setAddressLabel(viewModel.addressLabel(loginMethod));
+          if (loginMethod == viewModel.DISCOVERY_LOCAL) {
+            scanAddress();
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      })();
+      console.log('Settings opened');
+    }, [setAddress, setLoginMethod]),
+  );
+  console.log('Settings rendered');
 
   return (
     <KeyboardAvoidingView
       style={styles.settingsPage}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       enabled>
-      {/* <Animatable.View
-        animation={selectedId !== manual ? 'fadeIn' : 'fadeOut'}
-        duration={200}>
-        <Text style={styles.text}>{ipAddress}</Text>
-      </Animatable.View> */}
-
       <View style={[styles.textContainer, styles.horizontal]}>
         <Text style={styles.titleText}>{addressLabel}</Text>
         {isScanning ? <ActivityIndicator /> : null}
       </View>
 
       <TextInput
-        style={[styles.input, inputStyle()]}
+        style={[styles.input, viewModel.inputStyle(loginMethod)]}
         placeholder="IP address"
-        value={ipAddress}
-        onChangeText={newText => setIpAddress(newText)}
-        editable={selectedId === manual}
+        defaultValue={address}
+        onChangeText={newText => setAddress(newText)}
+        editable={loginMethod === viewModel.LOGIN_MAUAL}
       />
 
       <RadioGroup
         containerStyle={styles.radioGroup}
-        radioButtons={radioButtons}
-        onPress={id => {
-          setSelectedId(id);
-          switch (id) {
-            case discovery:
-              scanAddress();
-              break;
-            case manual:
-              setScanning(false);
-              setAddressLabel('Enter IP address');
-              RNUserDefaults.get('ipAddress').then(function (value: string) {
-                if (value !== undefined) {
-                  setIpAddress(value);
-                }
-                console.log('Manual using:', value);
-              });
-              break;
-            case cloud:
-              setScanning(false);
-              setAddressLabel('Will use cloud');
-              setIpAddress('icc.youus.it');
-              break;
+        radioButtons={viewModel.radioButtons}
+        onPress={async loginMethod => {
+          setLoginMethod(loginMethod);
+          setScanning(viewModel.isScanning(loginMethod));
+          setAddressLabel(viewModel.addressLabel(loginMethod));
+          const ipAddress = await viewModel.address(loginMethod);
+          setAddress(ipAddress);
+          if (loginMethod == viewModel.DISCOVERY_LOCAL) {
+            scanAddress();
           }
         }}
-        selectedId={selectedId}
+        selectedId={loginMethod}
       />
 
       <Button
         style={styles.button}
-        onPress={() => {
-          RNUserDefaults.set('ipAddress', ipAddress).then(function () {
-            console.log('ipAddress saved', ipAddress);
-          });
-          RNUserDefaults.set(
-            'useCloud',
-            selectedId === cloud ? 'true' : 'false',
-          ).then(function () {
-            console.log('ipAddress saved', ipAddress);
-          });
+        onPress={async () => {
+          await RNUserDefaults.set('ipAddress', address);
+          console.log('ipAddress saved:', address);
+          await RNUserDefaults.set('loginMethod', loginMethod);
+          console.log('selectedMethod saved:', loginMethod);
           navigation.goBack();
         }}
         title="Apply"
@@ -168,5 +111,3 @@ function SettingsScreen() {
     </KeyboardAvoidingView>
   );
 }
-
-export default SettingsScreen;
