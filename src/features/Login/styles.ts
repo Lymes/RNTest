@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
   },
+  linearGradient: {
+    flex: 1,
+  },
   loginTitle: {
     fontWeight: 'bold',
     fontSize: 40,
@@ -16,8 +19,8 @@ const styles = StyleSheet.create({
   input: {
     alignSelf: 'center',
     borderRadius: 8,
-    borderWidth: 0.4,
-    borderColor: '#9c9c9c',
+    borderWidth: 0.5,
+    borderColor: 'black',
     height: 40,
     minHeight: 40,
     width: '80%',
@@ -28,8 +31,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     flex: 10,
     borderRadius: 8,
-    borderWidth: 0.4,
-    borderColor: '#9c9c9c',
+    borderWidth: 0.5,
+    borderColor: 'black',
     minHeight: 40,
     width: '80%',
     margin: 12,

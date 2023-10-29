@@ -63,8 +63,8 @@ export class SettingsViewModel {
 
   inputStyle(loginMethod: string | undefined): ViewStyle {
     return {
-      borderColor: loginMethod === this.LOGIN_MAUAL ? '#9c9c9c' : '#ffffff',
-      elevation: loginMethod === this.LOGIN_MAUAL ? 5 : 0,
+      borderColor: loginMethod === this.LOGIN_MAUAL ? '#000000' : '#ffffff',
+      elevation: loginMethod === this.LOGIN_MAUAL ? 4 : 0,
     };
   }
 

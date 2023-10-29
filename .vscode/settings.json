@@ -14,4 +14,9 @@
           "source.fixAll.eslint": true
         }
       },
+      "vscode-color-picker.languages": [
+        "python",
+        "javascript",
+        "typescript"
+    ],
 }

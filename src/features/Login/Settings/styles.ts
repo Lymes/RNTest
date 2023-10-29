@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   input: {
     alignSelf: 'center',
     borderRadius: 8,
-    borderWidth: 0.4,
-    borderColor: '#9c9c9c',
+    borderWidth: 0.5,
+    borderColor: 'black',
     height: 40,
     minHeight: 40,
     width: '100%',
