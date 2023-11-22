@@ -17,6 +17,8 @@
       "vscode-color-picker.languages": [
         "python",
         "javascript",
-        "typescript"
+        "typescript",
+        "typescriptx"
     ],
+    "java.configuration.updateBuildConfiguration": "automatic",
 }

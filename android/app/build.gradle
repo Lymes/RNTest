@@ -73,9 +73,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.test2"
+    namespace "com.youus.Iris"
     defaultConfig {
-        applicationId "com.test2"
+        applicationId "com.youus.Iris"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -23,4 +23,10 @@
 #endif
 }
 
+- (UIView *)createRootViewWithBridge:(RCTBridge *)bridge moduleName:(NSString *)moduleName initProps:(NSDictionary *)initPropsv
+{
+  UIView *view = [super createRootViewWithBridge:bridge moduleName:moduleName initProps:initPropsv];
+  return view;
+}
+
 @end

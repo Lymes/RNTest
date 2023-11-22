@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 import {
   Platform,
   KeyboardAvoidingView,
@@ -7,6 +7,8 @@ import {
   TextInput,
   View,
   ActivityIndicator,
+  TouchableOpacity,
+  Image,
 } from 'react-native';
 import {styles} from './styles';
 import {Button} from '@react-native-material/core';
@@ -16,11 +18,10 @@ import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
 import RNUserDefaults from 'rn-user-defaults';
 import {SettingsViewModel} from './SettingsViewModel';
 
-type SettingsProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
-
+type SettingsProps = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 const viewModel = new SettingsViewModel();
 
-export default function SettingsScreen({navigation}: SettingsProps) {
+export default function SettingsScreen() {
   const [address, setAddress] = useState<string | undefined>('192.168.1.1');
   const [addressLabel, setAddressLabel] = useState<string | undefined>(
     'IP address',
@@ -64,50 +65,49 @@ export default function SettingsScreen({navigation}: SettingsProps) {
   console.log('Settings rendered');
 
   return (
-    <KeyboardAvoidingView
-      style={styles.settingsPage}
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      enabled>
-      <View style={[styles.textContainer, styles.horizontal]}>
-        <Text style={styles.titleText}>{addressLabel}</Text>
-        {isScanning ? <ActivityIndicator /> : null}
-      </View>
-
-      <TextInput
-        style={[styles.input, viewModel.inputStyle(loginMethod)]}
-        placeholder="IP address"
-        defaultValue={address}
-        onChangeText={newText => setAddress(newText)}
-        editable={loginMethod === viewModel.LOGIN_MAUAL}
-      />
-
-      <RadioGroup
-        containerStyle={styles.radioGroup}
-        radioButtons={viewModel.radioButtons}
-        onPress={async loginMethod => {
-          setLoginMethod(loginMethod);
-          setScanning(viewModel.isScanning(loginMethod));
-          setAddressLabel(viewModel.addressLabel(loginMethod));
-          const ipAddress = await viewModel.address(loginMethod);
-          setAddress(ipAddress);
-          if (loginMethod == viewModel.DISCOVERY_LOCAL) {
-            scanAddress();
-          }
-        }}
-        selectedId={loginMethod}
-      />
-
-      <Button
-        style={styles.button}
-        onPress={async () => {
-          await RNUserDefaults.set('ipAddress', address);
-          console.log('ipAddress saved:', address);
-          await RNUserDefaults.set('loginMethod', loginMethod);
-          console.log('selectedMethod saved:', loginMethod);
-          navigation.goBack();
-        }}
-        title="Apply"
-      />
-    </KeyboardAvoidingView>
+    <View style={styles.settingsPage}>
+      <KeyboardAvoidingView
+        style={styles.settingsColumn}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        enabled>
+        <View style={[styles.textContainer, styles.horizontal]}>
+          <Text style={styles.titleText}>{addressLabel}</Text>
+          {isScanning ? <ActivityIndicator /> : null}
+        </View>
+        <TextInput
+          style={[styles.input, viewModel.inputStyle(loginMethod)]}
+          placeholder="IP address"
+          defaultValue={address}
+          onChangeText={newText => setAddress(newText)}
+          editable={loginMethod === viewModel.LOGIN_MAUAL}
+        />
+        <RadioGroup
+          containerStyle={styles.radioGroup}
+          radioButtons={viewModel.radioButtons}
+          onPress={async loginMethod => {
+            setLoginMethod(loginMethod);
+            setScanning(viewModel.isScanning(loginMethod));
+            setAddressLabel(viewModel.addressLabel(loginMethod));
+            const ipAddress = await viewModel.address(loginMethod);
+            setAddress(ipAddress);
+            if (loginMethod == viewModel.DISCOVERY_LOCAL) {
+              scanAddress();
+            }
+          }}
+          selectedId={loginMethod}
+        />
+        <Button
+          style={styles.button}
+          onPress={async () => {
+            await RNUserDefaults.set('ipAddress', address);
+            console.log('ipAddress saved:', address);
+            await RNUserDefaults.set('loginMethod', loginMethod);
+            console.log('selectedMethod saved:', loginMethod);
+            //navigation.goBack();
+          }}
+          title="Apply"
+        />
+      </KeyboardAvoidingView>
+    </View>
   );
 }
