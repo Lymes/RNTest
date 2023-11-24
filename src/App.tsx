@@ -4,7 +4,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from './features/Login/LoginScreen';
 import SettingsScreen from './features/Login/Settings/SettingsScreen';
 import BluetoothScreen from './features/Login/Bluetooth/BluetoothScreen';
-import {RootStackParamList} from './features/navigation/RootStackPrams';
+import {RootStackParamList} from './navigation/RootStackPrams';
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 

@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../navigation/RootStackPrams';
-import {BluetoothViewModel} from './BluetoothViewModel';
 import BleManager from 'react-native-ble-manager';
-import PrimaryButton from '../../../components/Buttons/PrimaryButton';
+import {RootStackParamList} from '~navigation/RootStackPrams';
+import PrimaryButton from '~components/Buttons/PrimaryButton';
+import {BluetoothViewModel} from './BluetoothViewModel';
 
 type BluetoothProps = NativeStackScreenProps<RootStackParamList, 'BLE'>;
 const viewModel = new BluetoothViewModel();

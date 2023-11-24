@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, KeyboardAvoidingView, Platform} from 'react-native';
 import {styles} from './styles';
-import {RootStackParamList} from '../navigation/RootStackPrams';
-import {LoginViewModel} from './LoginViewModel';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import SettingsScreen from './Settings/SettingsScreen';
-import bleIcon from '../../../assets/images/ble.png';
-import ImageButton from '../../components/Buttons/ImageButton';
-import PrimaryButton from '../../components/Buttons/PrimaryButton';
-import InputText from '../../components/Inputs/InputText';
 import ActionSheet, {SheetManager} from 'react-native-actions-sheet';
+import {RootStackParamList} from '~navigation/RootStackPrams';
+import PrimaryButton from '~components/Buttons/PrimaryButton';
+import ImageButton from '~components/Buttons/ImageButton';
+import InputText from '~components/Inputs/InputText';
+import bleIcon from 'assets/images/ble.png';
+import SettingsScreen from './Settings/SettingsScreen';
+import {LoginViewModel} from './LoginViewModel';
 
 const viewModel = new LoginViewModel();
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
