@@ -1,4 +1,4 @@
-import {Alert} from 'react-native';
+import {Alert, Keyboard} from 'react-native';
 import * as Keychain from 'react-native-keychain';
 import ReactNativeBiometrics from 'react-native-biometrics';
 import RNUserDefaults from 'rn-user-defaults';
@@ -71,5 +71,19 @@ export class LoginViewModel {
     this.password = credentials.password;
     this.doLogin();
     return true;
+  }
+
+  isLoggable(): boolean {
+    return this.username.length > 0 && this.password.length > 0;
+  }
+
+  async loginPressed() {
+    if (!this.isLoggable()) {
+      console.log('Empty credentials, boiling out.');
+      return;
+    }
+    await Keychain.setGenericPassword(this.username, this.password);
+    Keyboard.dismiss();
+    this.doLogin();
   }
 }

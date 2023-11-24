@@ -24,6 +24,13 @@ export class SettingsViewModel {
   onAddressResolved?: ICCAddressCallback;
 
   constructor() {
+    console.log('Zeroconf callbacks');
+    this.zeroconf.on('error', (error: any) => {
+      console.log('Zeroconf error:', error);
+    });
+    this.zeroconf.on('found', (service: any) => {
+      console.log(service);
+    });
     this.zeroconf.on('resolved', (service: any) => {
       this.zeroconf.stop();
       let srvString: string = JSON.stringify(service, null, 2);
@@ -37,6 +44,7 @@ export class SettingsViewModel {
   }
 
   startScan() {
+    console.log('Zeroconf starts scan...');
     this.zeroconf.scan('rdlink', 'tcp', 'local.');
   }
 

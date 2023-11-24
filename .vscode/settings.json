@@ -3,7 +3,7 @@
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode", /// TSX auto format on save Prettier
         "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": { /// TSX auto format on save ESLint
+        "editor.codeActionsOnSave": { /// TS auto format on save ESLint
           "source.fixAll.eslint": true
         }
     },

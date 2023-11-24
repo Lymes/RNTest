@@ -490,6 +490,7 @@
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Setup WiFi";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,6 +519,7 @@
 				DEVELOPMENT_TEAM = QVFBZ7RHN2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Setup WiFi";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

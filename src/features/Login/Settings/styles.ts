@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     width: '100%',
-    height: '100%',
   },
   topRightButton: {
     alignSelf: 'flex-end',
@@ -27,20 +26,30 @@ const styles = StyleSheet.create({
   radioLabels: {
     fontFamily: 'DINPro',
   },
-  button: {
-    marginTop: 40,
-  },
-  input: {
+  applyButton: {
     alignSelf: 'center',
+    backgroundColor: '#3275df',
+    color: 'white',
     borderRadius: 8,
-    borderWidth: 0.5,
-    borderColor: 'black',
-    height: 40,
-    minHeight: 40,
+    fontFamily: 'DINPro',
+    fontSize: 16,
     width: '100%',
-    marginBottom: 20,
-    padding: 10,
+    height: 40,
+    marginTop: 30,
   },
+
+  ipAddressInput: {
+    alignSelf: 'center',
+    width: '100%',
+    height: 40,
+    margin: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'grey',
+    backgroundColor: 'white',
+    elevation: 0,
+  },
+
   textContainer: {
     alignSelf: 'flex-start',
   },

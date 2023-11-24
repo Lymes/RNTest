@@ -1,24 +1,20 @@
 import React, {useState} from 'react';
-import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {useFocusEffect} from '@react-navigation/native';
 import {
   Platform,
   KeyboardAvoidingView,
   Text,
-  TextInput,
   View,
   ActivityIndicator,
-  TouchableOpacity,
-  Image,
 } from 'react-native';
 import {styles} from './styles';
-import {Button} from '@react-native-material/core';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../navigation/RootStackPrams';
-import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
+import RadioGroup from 'react-native-radio-buttons-group';
 import RNUserDefaults from 'rn-user-defaults';
 import {SettingsViewModel} from './SettingsViewModel';
+import {SheetManager} from 'react-native-actions-sheet';
+import PrimaryButton from '../../../components/Buttons/PrimaryButton';
+import InputText from '../../../components/Inputs/InputText';
 
-type SettingsProps = NativeStackScreenProps<RootStackParamList, 'Settings'>;
 const viewModel = new SettingsViewModel();
 
 export default function SettingsScreen() {
@@ -57,6 +53,7 @@ export default function SettingsScreen() {
           }
         } catch (err) {
           console.error(err);
+          throw err;
         }
       })();
       console.log('Settings opened');
@@ -74,10 +71,10 @@ export default function SettingsScreen() {
           <Text style={styles.titleText}>{addressLabel}</Text>
           {isScanning ? <ActivityIndicator /> : null}
         </View>
-        <TextInput
-          style={[styles.input, viewModel.inputStyle(loginMethod)]}
-          placeholder="IP address"
+        <InputText
           defaultValue={address}
+          style={[styles.ipAddressInput, viewModel.inputStyle(loginMethod)]}
+          placeholder="IP address"
           onChangeText={newText => setAddress(newText)}
           editable={loginMethod === viewModel.LOGIN_MAUAL}
         />
@@ -96,14 +93,14 @@ export default function SettingsScreen() {
           }}
           selectedId={loginMethod}
         />
-        <Button
-          style={styles.button}
+        <PrimaryButton
+          style={styles.applyButton}
           onPress={async () => {
             await RNUserDefaults.set('ipAddress', address);
             console.log('ipAddress saved:', address);
             await RNUserDefaults.set('loginMethod', loginMethod);
             console.log('selectedMethod saved:', loginMethod);
-            //navigation.goBack();
+            SheetManager.hide('settingsSheet');
           }}
           title="Apply"
         />
