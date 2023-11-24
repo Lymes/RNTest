@@ -7,13 +7,13 @@ import {
   View,
   ActivityIndicator,
 } from 'react-native';
-import {styles} from './styles';
 import RadioGroup from 'react-native-radio-buttons-group';
 import RNUserDefaults from 'rn-user-defaults';
 import {SheetManager} from 'react-native-actions-sheet';
 import PrimaryButton from '~components/Buttons/PrimaryButton';
 import InputText from '~components/Inputs/InputText';
 import {SettingsViewModel} from './SettingsViewModel';
+import {styles} from './SettingsScreen.style';
 
 const viewModel = new SettingsViewModel();
 

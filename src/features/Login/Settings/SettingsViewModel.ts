@@ -1,6 +1,6 @@
 import {RadioButtonProps} from 'react-native-radio-buttons-group';
 import Zeroconf from 'react-native-zeroconf';
-import {styles} from './styles';
+import {styles} from './SettingsScreen.style';
 import {ViewStyle} from 'react-native';
 import RNUserDefaults from 'rn-user-defaults';
 
