@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     backgroundColor: 'white',
     elevation: 0,
+    marginBottom: 30,
   },
 
   textContainer: {

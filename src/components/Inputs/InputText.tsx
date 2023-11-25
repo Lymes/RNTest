@@ -33,6 +33,7 @@ const InputText: React.FC<TextInputProps> = (props: TextInputProps) => {
             width: '90%',
             height: undefined,
             margin: undefined,
+            marginBottom: undefined,
             borderWidth: undefined,
             borderRadius: undefined,
             justifyContent: 'center',

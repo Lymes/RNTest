@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/DINPro-Black tr.ttf",
+      "sha1": "a283d43eb0d7dbea66fc9d25717935f15b5ccdce"
+    },
+    {
+      "path": "assets/fonts/DINPro-Bold tr.ttf",
+      "sha1": "d0ce13eca9a7458237b984e6f4459a309840c78d"
+    },
+    {
+      "path": "assets/fonts/DINPro-Light tr.ttf",
+      "sha1": "e3651995a6088d112a521d4b3dcc72eb250d51c8"
+    },
+    {
+      "path": "assets/fonts/DINPro-Medium tr.ttf",
+      "sha1": "60f7899505309f09785d222653cfa7e8f16be9f5"
+    }
+  ]
+}

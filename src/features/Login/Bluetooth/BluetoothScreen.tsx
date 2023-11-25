@@ -6,13 +6,16 @@ import {
   NativeEventEmitter,
   Text,
   ActivityIndicator,
+  View,
+  FlatList,
+  Keyboard,
 } from 'react-native';
-import {styles} from './styles';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import BleManager from 'react-native-ble-manager';
 import {RootStackParamList} from '~navigation/RootStackPrams';
 import PrimaryButton from '~components/Buttons/PrimaryButton';
 import {BluetoothViewModel} from './BluetoothViewModel';
+import {styles} from './BluetoothScreen.style';
+import InputText from '~components/Inputs/InputText';
 
 type BluetoothProps = NativeStackScreenProps<RootStackParamList, 'BLE'>;
 const viewModel = new BluetoothViewModel();
@@ -21,84 +24,81 @@ const BleManagerModule = NativeModules.BleManager;
 const BleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
 export default function BluetoothScreen({navigation}: BluetoothProps) {
+  const [wifiSSID, setSSID] = useState<string | undefined>(undefined);
   const [isScanning, setIsScanning] = useState(false);
+  const [logs, setLogs] = useState(Array<string>());
+
+  viewModel.feedLog = (msg: string) => {
+    setLogs(logs.concat(msg));
+  };
 
   useEffect(() => {
     let stopDiscoverListener = BleManagerEmitter.addListener(
       'BleManagerDiscoverPeripheral',
       peripheral => {
-        console.log('Discovered:', peripheral);
+        setLogs(logs.concat('Discovered: IRIS'));
         viewModel.peripheral = peripheral;
-      },
-    );
-    let stopConnectListener = BleManagerEmitter.addListener(
-      'BleManagerConnectPeripheral',
-      peripheral => {
-        console.log('Connected:', peripheral);
-        viewModel
-          .sendWiFiInfo('Ciaoneeeeee!!')
-          .then(res => {
-            viewModel.disconnectFromPeripheral();
-          })
-          .catch(err => {
-            viewModel.disconnectFromPeripheral();
-          });
-      },
-    );
-    let stopScanListener = BleManagerEmitter.addListener(
-      'BleManagerStopScan',
-      () => {
-        console.log('Scan stopped');
         setIsScanning(false);
-        viewModel.connectToPeripheral();
       },
     );
-    viewModel.handleAndroidPermissions();
-    //startScan();
+    (async () => {
+      setIsScanning(true);
+      viewModel.handleAndroidPermissions();
+      await viewModel.startScan();
+      const ssid = await viewModel.wifiSSID();
+      setSSID(ssid);
+    })();
     return () => {
       stopDiscoverListener.remove();
-      stopConnectListener.remove();
-      stopScanListener.remove();
     };
   }, []);
-
-  const startScan = () => {
-    if (!isScanning) {
-      BleManager.scan([viewModel.serviceUUID], 3, false)
-        .then(() => {
-          console.log('Scanning...');
-          setIsScanning(true);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    }
-  };
-
-  const scanLabel = (): string => {
-    if (isScanning) {
-      return 'Scanning...';
-    } else {
-      if (viewModel.peripheral == undefined) {
-        return 'Press scan to find periferic device';
-      } else {
-        return 'Found';
-      }
-    }
-  };
 
   return (
     <KeyboardAvoidingView
       style={styles.settingsPage}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       enabled>
+      <Text style={styles.ssidLabel}>
+        WiFi SSID: {wifiSSID || 'SSID not found'}
+      </Text>
+      <InputText
+        style={styles.credentialsInput}
+        placeholder="Password"
+        secureTextEntry={true}
+        onChangeText={(text: string) => {
+          viewModel.wifiPassword = text;
+        }}
+      />
       <PrimaryButton
-        title="Scan"
+        style={styles.sendButton}
+        title="Send to IRIS"
         disabled={isScanning}
-        onPress={startScan}></PrimaryButton>
-
-      <Text>{scanLabel()}</Text>
-      {isScanning ? <ActivityIndicator /> : null}
+        onPress={async () => {
+          Keyboard.dismiss();
+          setIsScanning(true);
+          await viewModel.pair();
+          (await viewModel.connect()) &&
+            (await viewModel.findService()) &&
+            (await viewModel.sendWiFiInfo(
+              `{\"ssid\": \"${wifiSSID}\", \"password\": \"${viewModel.wifiPassword}\"}`,
+            )) &&
+            (await viewModel.disconnect());
+          setIsScanning(false);
+        }}
+      />
+      <View style={styles.scanContainer}>
+        <Text style={styles.scanLabel}>Logs</Text>
+        {isScanning ? (
+          <ActivityIndicator
+            size="large"
+            color="#3275df"
+            style={styles.scanIndicator}
+          />
+        ) : null}
+      </View>
+      <View style={styles.logContainer}>
+        <FlatList data={logs} renderItem={({item}) => <Text>{item}</Text>} />
+      </View>
     </KeyboardAvoidingView>
   );
 }

@@ -1,9 +1,8 @@
-import {useState} from 'react';
 import {
   Image,
   ImageSourcePropType,
   ImageStyle,
-  Pressable,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -15,44 +14,29 @@ interface Props {
 }
 
 const ImageButton: React.FC<Props> = ({style, onPress, image}) => {
-  const [isPressed, setPressed] = useState(false);
   return (
     <View
       style={[
         style,
-        {width: undefined, height: undefined},
-        isPressed
-          ? {
-              backgroundColor: style?.tintColor,
-              borderColor: style?.backgroundColor,
-              borderWidth: 1,
-            }
-          : {
-              backgroundColor: style?.backgroundColor,
-              borderColor: style?.borderColor,
-              borderWidth: style?.borderWidth,
-            },
+        {
+          width: undefined,
+          height: undefined,
+          backgroundColor: style?.backgroundColor,
+          borderColor: style?.borderColor,
+          borderWidth: style?.borderWidth,
+        },
       ]}>
-      <Pressable
-        onPress={onPress}
-        onPressOut={() => {
-          setPressed(false);
-        }}
-        onPressIn={() => {
-          setPressed(true);
-        }}>
+      <TouchableOpacity onPress={onPress} hitSlop={20}>
         <Image
           style={[
             {
               height: style?.height || 32,
               width: style?.width || 32,
+              tintColor: style?.tintColor,
             },
-            isPressed
-              ? {tintColor: style?.backgroundColor}
-              : {tintColor: style?.tintColor},
           ]}
           source={image}></Image>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };

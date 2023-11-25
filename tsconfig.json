@@ -1,13 +1,13 @@
 {
-    "extends": "@tsconfig/react-native/tsconfig.json",
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "assets": ["./assets/*"],
-        "tests": ["./tests/*"],
-        "~components/*": ["./src/components/*"],
-        "~navigation/*": ["./src/navigation/*"],
-        "~i18n/*": ["./src/i18n/*"],
-      },
-    }
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "assets": ["./assets/*"],
+      "tests": ["./tests/*"],
+      "~components/*": ["./src/components/*"],
+      "~navigation/*": ["./src/navigation/*"],
+      "~i18n/*": ["./src/i18n/*"],
+    },
   }
+}

@@ -22,6 +22,7 @@ export class SettingsViewModel {
 
   zeroconf = new Zeroconf();
   onAddressResolved?: ICCAddressCallback;
+  isBonjourScanning: boolean = false;
 
   constructor() {
     console.log('Zeroconf callbacks');
@@ -32,20 +33,34 @@ export class SettingsViewModel {
       console.log(service);
     });
     this.zeroconf.on('resolved', (service: any) => {
-      this.zeroconf.stop();
+      this.stopScan();
       let srvString: string = JSON.stringify(service, null, 2);
       console.log(srvString);
       let obj: BonjourResponse = JSON.parse(srvString);
       if (this.onAddressResolved) {
-        //this.onAddressResolved(obj.txt.host);
         this.onAddressResolved(obj.addresses[0]);
       }
     });
   }
 
   startScan() {
-    console.log('Zeroconf starts scan...');
+    console.log('Start scanning');
+    this.isBonjourScanning = true;
     this.zeroconf.scan('rdlink', 'tcp', 'local.');
+  }
+
+  stopScan() {
+    if (this.isBonjourScanning) {
+      console.log('Stop scanning');
+      this.zeroconf.stop();
+      this.isBonjourScanning = false;
+    }
+  }
+
+  async saveLoginInfo(loginMethod?: string, ipAddress?: string) {
+    console.log('Save login info:', loginMethod, ipAddress);
+    await RNUserDefaults.set('loginMethod', loginMethod);
+    await RNUserDefaults.set('ipAddress', ipAddress);
   }
 
   radioButtons: RadioButtonProps[] = [
@@ -77,13 +92,13 @@ export class SettingsViewModel {
   }
 
   isScanning(loginMethod: string | undefined): boolean {
-    return loginMethod === this.DISCOVERY_LOCAL;
+    return loginMethod === this.DISCOVERY_LOCAL && this.isBonjourScanning;
   }
 
   addressLabel(loginMethod: string | undefined): string | undefined {
     switch (loginMethod) {
       case this.DISCOVERY_LOCAL:
-        return 'Scanning...';
+        return this.isBonjourScanning ? 'Scanning...' : 'Found IP address';
       case this.LOGIN_MAUAL:
         return 'Enter IP address manually';
       case this.LOGIN_CLOUD:

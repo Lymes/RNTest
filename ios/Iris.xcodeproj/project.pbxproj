@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-Iris-IrisTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Iris-IrisTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		19A5BFD6B75645AD8F7C0C98 /* DINPro-Black tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */; };
+		B9073BFCAA0A4233814D396E /* DINPro-Bold tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */; };
+		DC2537F279294D87B9A4CBBD /* DINPro-Light tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */; };
+		886367C859FB4C728A0C7D9A /* DINPro-Medium tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,9 +45,14 @@
 		5709B34CF0A7D63546082F79 /* Pods-Iris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris.release.xcconfig"; path = "Target Support Files/Pods-Iris/Pods-Iris.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Iris-IrisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.debug.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Iris.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Iris.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A1ECF42B12718200EC26A0 /* Iris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Iris.entitlements; path = Iris/Iris.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Iris/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Iris-IrisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.release.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */ = {isa = PBXFileReference; name = "DINPro-Black tr.ttf"; path = "../assets/fonts/DINPro-Black tr.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */ = {isa = PBXFileReference; name = "DINPro-Bold tr.ttf"; path = "../assets/fonts/DINPro-Bold tr.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */ = {isa = PBXFileReference; name = "DINPro-Light tr.ttf"; path = "../assets/fonts/DINPro-Light tr.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */ = {isa = PBXFileReference; name = "DINPro-Medium tr.ttf"; path = "../assets/fonts/DINPro-Medium tr.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +95,7 @@
 		13B07FAE1A68108700A75B9A /* Iris */ = {
 			isa = PBXGroup;
 			children = (
+				78A1ECF42B12718200EC26A0 /* Iris.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -122,6 +132,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				00C4289CB9E3470EB2740934 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +158,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		00C4289CB9E3470EB2740934 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */,
+				37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */,
+				2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */,
+				DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +267,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				19A5BFD6B75645AD8F7C0C98 /* DINPro-Black tr.ttf in Resources */,
+				B9073BFCAA0A4233814D396E /* DINPro-Bold tr.ttf in Resources */,
+				DC2537F279294D87B9A4CBBD /* DINPro-Light tr.ttf in Resources */,
+				886367C859FB4C728A0C7D9A /* DINPro-Medium tr.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,12 +512,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Iris/Iris.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = QVFBZ7RHN2;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Setup WiFi";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -515,11 +548,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Iris/Iris.entitlements;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = QVFBZ7RHN2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Setup WiFi";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

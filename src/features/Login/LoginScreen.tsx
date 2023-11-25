@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, KeyboardAvoidingView, Platform} from 'react-native';
-import {styles} from './styles';
+import {SafeAreaView, KeyboardAvoidingView, Platform, Text} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ActionSheet, {SheetManager} from 'react-native-actions-sheet';
 import {RootStackParamList} from '~navigation/RootStackPrams';
@@ -10,6 +9,7 @@ import InputText from '~components/Inputs/InputText';
 import bleIcon from 'assets/images/ble.png';
 import SettingsScreen from './Settings/SettingsScreen';
 import {LoginViewModel} from './LoginViewModel';
+import {styles} from './LoginScreen.style';
 
 const viewModel = new LoginViewModel();
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -29,7 +29,7 @@ export default function LoginScreen({navigation}: LoginProps) {
     })();
   }, [viewModel.initLogin]);
 
-  console.log('RENDER!');
+  console.log('LoginScreen rendered');
   return (
     <KeyboardAvoidingView
       style={styles.loginPage}
@@ -43,6 +43,7 @@ export default function LoginScreen({navigation}: LoginProps) {
             navigation.navigate('BLE');
           }}
         />
+        <Text style={styles.title}>IRIS</Text>
         <InputText
           defaultValue={viewModel.username}
           style={styles.credentialsInput}

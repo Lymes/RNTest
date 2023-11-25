@@ -1,36 +1,29 @@
-import {useState} from 'react';
-import {Pressable, View, Text, ButtonProps, TextStyle} from 'react-native';
+import {
+  View,
+  Text,
+  ButtonProps,
+  TextStyle,
+  TouchableOpacity,
+} from 'react-native';
 
 interface Props extends ButtonProps {
   style?: TextStyle;
 }
 
 const PrimaryButton: React.FC<Props> = (props: Props) => {
-  const [isPressed, setPressed] = useState(false);
   return (
-    <Pressable
-      onPress={props.onPress}
-      onPressOut={() => {
-        setPressed(false);
-      }}
-      onPressIn={() => {
-        setPressed(true);
-      }}>
+    <TouchableOpacity onPress={props.onPress} disabled={props.disabled}>
       <View
         style={[
           props.style,
-          {justifyContent: 'center'},
-          isPressed
-            ? {
-                backgroundColor: props.style?.color,
-                borderColor: props.style?.backgroundColor,
-                borderWidth: 1,
-              }
-            : {
-                backgroundColor: props.style?.backgroundColor,
-                borderColor: props.style?.borderColor,
-                borderWidth: props.style?.borderWidth,
-              },
+          {
+            justifyContent: 'center',
+            backgroundColor: props.disabled
+              ? 'grey'
+              : props.style?.backgroundColor,
+            borderColor: props.style?.borderColor,
+            borderWidth: props.style?.borderWidth,
+          },
         ]}>
         <Text
           style={[
@@ -40,19 +33,13 @@ const PrimaryButton: React.FC<Props> = (props: Props) => {
               backgroundColor: undefined,
               height: undefined,
               textAlign: 'center',
+              color: props.style?.color,
             },
-            isPressed
-              ? {
-                  color: props.style?.backgroundColor,
-                }
-              : {
-                  color: props.style?.color,
-                },
           ]}>
           {props.title}
         </Text>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 };
 

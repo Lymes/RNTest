@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {useFocusEffect} from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
 import {
   Platform,
   KeyboardAvoidingView,
@@ -18,48 +17,40 @@ import {styles} from './SettingsScreen.style';
 const viewModel = new SettingsViewModel();
 
 export default function SettingsScreen() {
-  const [address, setAddress] = useState<string | undefined>('192.168.1.1');
-  const [addressLabel, setAddressLabel] = useState<string | undefined>(
-    'IP address',
-  );
+  const [address, setAddress] = useState<string | undefined>(undefined);
   const [loginMethod, setLoginMethod] = useState<string | undefined>(
     viewModel.LOGIN_MAUAL,
   );
-  const [isScanning, setScanning] = useState<boolean>(false);
 
   viewModel.onAddressResolved = (address: string) => {
-    setAddressLabel('Address found');
     setAddress(address);
-    setScanning(false);
   };
 
-  var scanAddress = function () {
-    setScanning(true);
-    setAddressLabel('Scanning...');
-    viewModel.startScan();
+  const changeLoginMethod = (method: string) => {
+    setLoginMethod(method);
+    method == viewModel.DISCOVERY_LOCAL
+      ? viewModel.startScan()
+      : viewModel.stopScan();
   };
 
-  useFocusEffect(
-    React.useCallback(() => {
-      (async () => {
-        try {
-          const ipAddress = await RNUserDefaults.get('ipAddress');
-          setAddress(ipAddress);
-          const loginMethod = await RNUserDefaults.get('loginMethod');
-          setLoginMethod(loginMethod);
-          setAddressLabel(viewModel.addressLabel(loginMethod));
-          if (loginMethod == viewModel.DISCOVERY_LOCAL) {
-            scanAddress();
-          }
-        } catch (err) {
-          console.error(err);
-          throw err;
-        }
-      })();
-      console.log('Settings opened');
-    }, [setAddress, setLoginMethod]),
-  );
-  console.log('Settings rendered');
+  useEffect(() => {
+    console.log('Settings opened');
+    (async () => {
+      try {
+        const loginMethod = await RNUserDefaults.get('loginMethod');
+        changeLoginMethod(loginMethod);
+        const ipAddress = await RNUserDefaults.get('ipAddress');
+        setAddress(ipAddress);
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
+    })();
+    return () => {
+      viewModel.stopScan();
+      console.log('Settings closed');
+    };
+  }, []);
 
   return (
     <View style={styles.settingsPage}>
@@ -68,8 +59,10 @@ export default function SettingsScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled>
         <View style={[styles.textContainer, styles.horizontal]}>
-          <Text style={styles.titleText}>{addressLabel}</Text>
-          {isScanning ? <ActivityIndicator /> : null}
+          <Text style={styles.titleText}>
+            {viewModel.addressLabel(loginMethod)}
+          </Text>
+          {viewModel.isScanning(loginMethod) ? <ActivityIndicator /> : null}
         </View>
         <InputText
           defaultValue={address}
@@ -82,24 +75,16 @@ export default function SettingsScreen() {
           containerStyle={styles.radioGroup}
           radioButtons={viewModel.radioButtons}
           onPress={async loginMethod => {
-            setLoginMethod(loginMethod);
-            setScanning(viewModel.isScanning(loginMethod));
-            setAddressLabel(viewModel.addressLabel(loginMethod));
+            changeLoginMethod(loginMethod);
             const ipAddress = await viewModel.address(loginMethod);
             setAddress(ipAddress);
-            if (loginMethod == viewModel.DISCOVERY_LOCAL) {
-              scanAddress();
-            }
           }}
           selectedId={loginMethod}
         />
         <PrimaryButton
           style={styles.applyButton}
           onPress={async () => {
-            await RNUserDefaults.set('ipAddress', address);
-            console.log('ipAddress saved:', address);
-            await RNUserDefaults.set('loginMethod', loginMethod);
-            console.log('selectedMethod saved:', loginMethod);
+            viewModel.saveLoginInfo(loginMethod, address);
             SheetManager.hide('settingsSheet');
           }}
           title="Apply"
