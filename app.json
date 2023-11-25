@@ -1,4 +1,7 @@
 {
   "name": "Iris",
-  "displayName": "Iris"
+  "displayName": "Iris",
+  "android": { 
+    "softwareKeyboardLayoutMode": "pan"
+  } 
 }

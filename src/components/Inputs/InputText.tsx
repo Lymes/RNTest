@@ -27,6 +27,7 @@ const InputText: React.FC<TextInputProps> = (props: TextInputProps) => {
       <TextInput
         {...props}
         secureTextEntry={props.secureTextEntry ? !isClear : false}
+        textContentType="oneTimeCode"
         style={[
           props.style,
           {
