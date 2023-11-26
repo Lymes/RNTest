@@ -36,7 +36,7 @@ export class BluetoothViewModel {
 
   async startScan(): Promise<boolean> {
     var result = false;
-    await BleManager.scan([this.serviceUUID], 3, false)
+    await BleManager.scan([this.serviceUUID], 300, false)
       .then(() => {
         if (this.feedLog) this.feedLog('Scanning...');
         result = true;

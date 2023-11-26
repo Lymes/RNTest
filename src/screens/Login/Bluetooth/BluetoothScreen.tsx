@@ -41,6 +41,12 @@ export default function BluetoothScreen({navigation}: BluetoothProps) {
         setIsScanning(false);
       },
     );
+    let stopScanListener = BleManagerEmitter.addListener(
+      'BleManagerStopScan',
+      () => {
+        setIsScanning(false);
+      },
+    );
     (async () => {
       setIsScanning(true);
       viewModel.handleAndroidPermissions();
@@ -50,6 +56,7 @@ export default function BluetoothScreen({navigation}: BluetoothProps) {
     })();
     return () => {
       stopDiscoverListener.remove();
+      stopScanListener.remove();
     };
   }, []);
 
@@ -72,7 +79,7 @@ export default function BluetoothScreen({navigation}: BluetoothProps) {
       <PrimaryButton
         style={styles.sendButton}
         title="Send to IRIS"
-        disabled={isScanning}
+        disabled={isScanning || viewModel.peripheral == undefined}
         onPress={async () => {
           Keyboard.dismiss();
           setIsScanning(true);

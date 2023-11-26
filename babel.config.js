@@ -9,6 +9,11 @@ module.exports = {
          alias: {
            tests: ['./tests/'],
            assets: ['./assets'],
+           "~contexts": ["./src/contexts"],
+           "~routes": ["./src/routes"],
+           "~screens": ["./src/screens"],
+           "~services": ["./src/services"],
+           "~hooks": ["./src/hooks"],     
            "~components": "./src/components",
            "~navigation": "./src/navigation",
            "~i18n": "./src/i18n"

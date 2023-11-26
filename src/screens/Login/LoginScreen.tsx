@@ -10,12 +10,14 @@ import bleIcon from 'assets/images/ble.png';
 import SettingsScreen from './Settings/SettingsScreen';
 import {LoginViewModel} from './LoginViewModel';
 import {styles} from './LoginScreen.style';
+import {useAuth} from '~hooks/useAuth';
 
 const viewModel = new LoginViewModel();
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export default function LoginScreen({navigation}: LoginProps) {
   const [hasCredentials, setGotCredentials] = useState<boolean>(false);
+  const auth = useAuth();
 
   useEffect(() => {
     (async () => {
@@ -66,6 +68,7 @@ export default function LoginScreen({navigation}: LoginProps) {
           title="Login"
           onPress={async () => {
             viewModel.loginPressed();
+            await auth.signIn(viewModel.username, viewModel.password);
           }}
         />
         <PrimaryButton
