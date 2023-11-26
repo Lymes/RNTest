@@ -5,21 +5,33 @@ export const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#d1d1d1',
   },
   bg: {
     overflow: 'visible',
+    paddingVertical: 20,
+  },
+  button: {
+    width: 150,
+    height: 100,
+    backgroundColor: 'blue',
+  },
+  wrapper: {
+    paddingTop: 100,
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
     backgroundColor: '#222222',
-    paddingVertical: 80,
-  },
-  contentContainer: {
-    justifyContent: 'flex-start',
-  },
-  itemContainer: {
-    padding: 10,
   },
   item: {
-    width: '100%',
-    height: 80,
+    width: 100,
+    height: 100,
+    borderRadius: 8,
+    backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  item_text: {
+    fontSize: 40,
+    color: '#FFFFFF',
   },
 });
