@@ -6,8 +6,13 @@ import WifiManager from 'react-native-wifi-reborn';
 declare type FeedCallback = (msg: string) => void;
 
 export class BluetoothViewModel {
-  serviceUUID = 'BD0F6577-4A38-4D71-AF1B-4E8F57708080';
-  characteristicUUID = 'F6D43CF2-89C5-4CF1-A0E5-38B6DDC8E741';
+  // FOR DEBUG
+  //serviceUUID = 'BD0F6577-4A38-4D71-AF1B-4E8F57708080';
+  //characteristicUUID = 'F6D43CF2-89C5-4CF1-A0E5-38B6DDC8E741';
+
+  // FOR DUSUN
+  serviceUUID = '8888';
+  characteristicUUID = '8888';
 
   wifiPassword = '';
   peripheral?: Peripheral;
@@ -36,9 +41,9 @@ export class BluetoothViewModel {
 
   async startScan(): Promise<boolean> {
     var result = false;
-    await BleManager.scan([this.serviceUUID], 300, false)
+    await BleManager.scan([this.serviceUUID], 3, false)
       .then(() => {
-        if (this.feedLog) this.feedLog('Scanning...');
+        if (this.feedLog) this.feedLog('Scanning for IRIS...');
         result = true;
       })
       .catch(error => {
