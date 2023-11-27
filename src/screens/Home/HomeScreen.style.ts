@@ -8,22 +8,15 @@ export const styles = StyleSheet.create({
   },
   bg: {
     overflow: 'visible',
-    paddingVertical: 20,
-  },
-  button: {
-    width: 150,
-    height: 100,
-    backgroundColor: 'blue',
   },
   wrapper: {
-    paddingTop: 100,
+    paddingTop: 20,
     width: '100%',
     height: '100%',
     justifyContent: 'center',
     backgroundColor: '#222222',
   },
   item: {
-    width: 100,
     height: 100,
     borderRadius: 8,
     backgroundColor: 'red',

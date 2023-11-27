@@ -1,9 +1,9 @@
-import React, {memo, useCallback, useState} from 'react';
+import React, {memo, useCallback, useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Text, View} from 'react-native';
+import {Dimensions, ScaledSize, ScrollView, Text, View} from 'react-native';
 import {RootStackParamList} from '~navigation/RootStackPrams';
 import {styles} from './HomeScreen.style';
-import {DraggableGrid} from 'react-native-draggable-grid';
+import {DraggableGrid} from '~components/Grid';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -25,25 +25,43 @@ export default function LoginScreen({navigation}: HomeProps) {
     {name: '9', key: 'night'},
     {name: '0', key: 'zero'},
   ]);
+  const [dragging, setDragging] = useState(false);
+  const [size, setSize] = useState<ScaledSize>(Dimensions.get('window'));
+
+  useEffect(() => {
+    const stopSizeListener = Dimensions.addEventListener(
+      'change',
+      ({window, screen}: {window: ScaledSize; screen: ScaledSize}) => {
+        setSize(window);
+      },
+    );
+    return () => {
+      stopSizeListener.remove();
+    };
+  }, []);
 
   const renderItem = (item: {name: string; key: string}) => (
-    <View style={styles.item} key={item.key}>
+    <View style={[styles.item, {width: size.width / 3 - 10}]} key={item.key}>
       <Text style={styles.item_text}>{item.name}</Text>
     </View>
   );
 
   return (
     <View style={styles.wrapper}>
-      <DraggableGrid
-        style={styles.bg}
-        numColumns={3}
-        itemHeight={120}
-        data={data}
-        renderItem={renderItem}
-        onDragRelease={(data: IItem[]) => {
-          setData(data);
-        }}
-      />
+      <ScrollView scrollEnabled={!dragging}>
+        <DraggableGrid
+          style={styles.bg}
+          numColumns={3}
+          itemHeight={120}
+          data={data}
+          renderItem={renderItem}
+          onDragStart={() => setDragging(true)}
+          onDragRelease={(data: IItem[]) => {
+            setDragging(false);
+            setData(data);
+          }}
+        />
+      </ScrollView>
     </View>
   );
 }

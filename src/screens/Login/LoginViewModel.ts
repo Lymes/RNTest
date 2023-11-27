@@ -69,7 +69,6 @@ export class LoginViewModel {
     console.log('Got credentials:', credentials.username, credentials.password);
     this.username = credentials.username;
     this.password = credentials.password;
-    this.doLogin();
     return true;
   }
 
