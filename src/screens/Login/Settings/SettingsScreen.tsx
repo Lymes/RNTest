@@ -37,10 +37,10 @@ export default function SettingsScreen() {
     console.log('Settings opened');
     (async () => {
       try {
-        const loginMethod = await RNUserDefaults.get('loginMethod');
-        changeLoginMethod(loginMethod);
         const ipAddress = await RNUserDefaults.get('ipAddress');
         setAddress(ipAddress);
+        const loginMethod = await RNUserDefaults.get('loginMethod');
+        changeLoginMethod(loginMethod);
       } catch (err) {
         console.error(err);
         throw err;
@@ -51,7 +51,6 @@ export default function SettingsScreen() {
       console.log('Settings closed');
     };
   }, []);
-
   return (
     <View style={styles.settingsPage}>
       <KeyboardAvoidingView

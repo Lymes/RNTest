@@ -44,6 +44,8 @@ export class LoginViewModel {
   }
 
   async initLogin(): Promise<boolean> {
+    this.username = '';
+    this.password = '';
     let value = await RNUserDefaults.get('useBiometric');
     if (value !== 'true') {
       console.log('Not supposed to use Biometric.');
@@ -83,6 +85,6 @@ export class LoginViewModel {
     }
     await Keychain.setGenericPassword(this.username, this.password);
     Keyboard.dismiss();
-    this.doLogin();
+    await this.doLogin();
   }
 }

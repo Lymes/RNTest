@@ -1,5 +1,7 @@
 import React, {createContext, useState, useContext, useEffect} from 'react';
 import {AuthData, authService} from '~services/authService';
+import * as Keychain from 'react-native-keychain';
+import RNUserDefaults from 'rn-user-defaults';
 
 export type AuthContextData = {
   authData?: AuthData;
@@ -66,6 +68,8 @@ const AuthProvider: React.FC<Props> = ({children}) => {
     // Remove the data from Async Storage
     // to NOT be recoverede in next session.
     // await AsyncStorage.removeItem('@AuthData');
+    Keychain.resetGenericPassword();
+    RNUserDefaults.set('useBiometric', 'false');
   };
 
   return (

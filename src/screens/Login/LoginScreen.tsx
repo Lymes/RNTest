@@ -22,11 +22,11 @@ export default function LoginScreen({navigation}: LoginProps) {
   useEffect(() => {
     (async () => {
       try {
-        const hasCredentials = await viewModel.initLogin();
-        setGotCredentials(true);
-        if (hasCredentials) {
+        const initRes = await viewModel.initLogin();
+        if (initRes) {
           await auth.signIn(viewModel.username, viewModel.password);
         }
+        setGotCredentials(true);
       } catch (err) {
         console.error(err);
         throw err;

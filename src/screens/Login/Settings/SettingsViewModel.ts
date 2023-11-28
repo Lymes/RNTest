@@ -25,22 +25,30 @@ export class SettingsViewModel {
   isBonjourScanning: boolean = false;
 
   constructor() {
-    console.log('Zeroconf callbacks');
+    console.log('Zeroconf listeners');
     this.zeroconf.on('error', (error: any) => {
       console.log('Zeroconf error:', error);
     });
     this.zeroconf.on('found', (service: any) => {
       console.log(service);
     });
+    this.zeroconf.on('update', (service: any) => {
+      console.log(service);
+    });
     this.zeroconf.on('resolved', (service: any) => {
+      console.log('RESOLVED!!');
       this.stopScan();
       let srvString: string = JSON.stringify(service, null, 2);
       console.log(srvString);
       let obj: BonjourResponse = JSON.parse(srvString);
-      if (this.onAddressResolved) {
-        this.onAddressResolved(obj.addresses[0]);
-      }
+      this.callback(obj.addresses[0]);
     });
+  }
+
+  callback(address: string) {
+    if (this.onAddressResolved) {
+      this.onAddressResolved(address);
+    }
   }
 
   startScan() {
@@ -51,9 +59,9 @@ export class SettingsViewModel {
 
   stopScan() {
     if (this.isBonjourScanning) {
+      this.isBonjourScanning = false;
       console.log('Stop scanning');
       this.zeroconf.stop();
-      this.isBonjourScanning = false;
     }
   }
 
