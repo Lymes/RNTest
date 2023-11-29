@@ -3,12 +3,11 @@ import Zeroconf from 'react-native-zeroconf';
 import {styles} from './SettingsScreen.style';
 import {ViewStyle} from 'react-native';
 import RNUserDefaults from 'rn-user-defaults';
-import type {FixedLengthArray} from 'type-fest';
 
 export interface BonjourResponse {
   port: number;
   name: string;
-  addresses: FixedLengthArray<string, 1>;
+  addresses: [string];
   txt: {
     host: string;
   };
@@ -35,7 +34,7 @@ export class SettingsViewModel {
       let srvString: string = JSON.stringify(service, null, 2);
       console.log(srvString);
       let obj: BonjourResponse = JSON.parse(srvString);
-      this.callback(obj.addresses[0] || 'undefined');
+      this.callback(obj.addresses[0]);
     });
   }
 
@@ -48,7 +47,7 @@ export class SettingsViewModel {
   startScan() {
     console.log('Start scanning');
     this.isBonjourScanning = true;
-    this.zeroconf.scan('airplay', 'tcp', 'local.');
+    this.zeroconf.scan('icc', 'tcp', 'local.');
   }
 
   stopScan() {
