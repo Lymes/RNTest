@@ -14,6 +14,7 @@ module.exports = {
            "~screens": ["./src/screens"],
            "~services": ["./src/services"],
            "~hooks": ["./src/hooks"],     
+           "~redux": ["./src/redux"],     
            "~components": "./src/components",
            "~navigation": "./src/navigation",
            "~i18n": "./src/i18n"

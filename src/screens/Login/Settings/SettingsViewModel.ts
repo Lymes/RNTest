@@ -1,8 +1,15 @@
 import {RadioButtonProps} from 'react-native-radio-buttons-group';
 import Zeroconf from 'react-native-zeroconf';
 import {styles} from './SettingsScreen.style';
-import {ViewStyle} from 'react-native';
 import RNUserDefaults from 'rn-user-defaults';
+import {Dispatch} from 'react';
+import {AnyAction} from '@reduxjs/toolkit';
+import {
+  LoginMethod,
+  setCloud,
+  setDiscovery,
+  setManual,
+} from '~redux/LoginMethodSlice';
 
 export interface BonjourResponse {
   port: number;
@@ -16,10 +23,6 @@ export interface BonjourResponse {
 declare type ICCAddressCallback = (address: string) => void;
 
 export class SettingsViewModel {
-  LOGIN_MAUAL = 'manual';
-  LOGIN_CLOUD = 'cloud';
-  DISCOVERY_LOCAL = 'discovery';
-
   zeroconf = new Zeroconf();
   onAddressResolved?: ICCAddressCallback;
   isBonjourScanning: boolean = false;
@@ -66,56 +69,40 @@ export class SettingsViewModel {
 
   radioButtons: RadioButtonProps[] = [
     {
-      id: this.LOGIN_CLOUD,
+      id: LoginMethod.CLOUD,
       label: 'Use Cloud',
-      value: this.LOGIN_CLOUD,
+      value: LoginMethod.CLOUD,
       labelStyle: styles.radioLabels,
     },
     {
-      id: this.LOGIN_MAUAL,
+      id: LoginMethod.MANUAL,
       label: 'Manual',
-      value: this.LOGIN_MAUAL,
+      value: LoginMethod.MANUAL,
       labelStyle: styles.radioLabels,
     },
     {
-      id: this.DISCOVERY_LOCAL,
+      id: LoginMethod.DISCOVERY,
       label: 'Discovery',
-      value: this.DISCOVERY_LOCAL,
+      value: LoginMethod.DISCOVERY,
       labelStyle: styles.radioLabels,
     },
   ];
 
-  inputStyle(loginMethod: string | undefined): ViewStyle {
-    return {
-      borderColor: loginMethod === this.LOGIN_MAUAL ? '#000000' : '#a2a2a2',
-      elevation: loginMethod === this.LOGIN_MAUAL ? 4 : 0,
-    };
-  }
-
-  isScanning(loginMethod: string | undefined): boolean {
-    return loginMethod === this.DISCOVERY_LOCAL && this.isBonjourScanning;
-  }
-
-  addressLabel(loginMethod: string | undefined): string | undefined {
+  async setLoginMethod(loginMethod: string, dispatch: Dispatch<AnyAction>) {
     switch (loginMethod) {
-      case this.DISCOVERY_LOCAL:
-        return this.isBonjourScanning ? 'Scanning...' : 'Found IP address';
-      case this.LOGIN_MAUAL:
-        return 'Enter IP address manually';
-      case this.LOGIN_CLOUD:
-        return 'Use ICC cloud';
-    }
-  }
-
-  async address(loginMethod: string | undefined): Promise<string | undefined> {
-    switch (loginMethod) {
-      case this.DISCOVERY_LOCAL:
-        return '';
-      case this.LOGIN_MAUAL:
+      case 'manual':
         const ipAddress = await RNUserDefaults.get('ipAddress');
-        return ipAddress;
-      case this.LOGIN_CLOUD:
-        return 'cloud.youus.it';
+        dispatch(setManual(ipAddress));
+        this.stopScan();
+        break;
+      case 'discovery':
+        dispatch(setDiscovery());
+        this.startScan();
+        break;
+      case 'cloud':
+        dispatch(setCloud());
+        this.stopScan();
+        break;
     }
   }
 }
