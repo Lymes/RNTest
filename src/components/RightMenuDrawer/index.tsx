@@ -30,8 +30,11 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
           title: 'Topology',
           drawerLabelStyle: {fontSize: 20, color: 'white'},
           drawerStyle: {
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
             backgroundColor: 'black',
-            width: 240,
+            width: 200,
           },
         }}
       />
