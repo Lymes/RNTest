@@ -517,12 +517,17 @@
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_CFBundleDisplayName = Iris;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will discover ICC gateways in the local network.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -533,7 +538,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lymes.Iris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youus.Iris;
 				PRODUCT_NAME = Iris;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -552,12 +557,17 @@
 				DEVELOPMENT_TEAM = QVFBZ7RHN2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Iris/Info.plist;
-				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_CFBundleDisplayName = Iris;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will discover ICC gateways in the local network.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
+				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -568,7 +578,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.lymes.Iris;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youus.Iris;
 				PRODUCT_NAME = Iris;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
