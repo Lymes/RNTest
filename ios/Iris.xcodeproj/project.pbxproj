@@ -521,8 +521,8 @@
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) Authentication with TouchId or FaceID";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will discover ICC gateways in the local network.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Iris Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Iris will discover ICC gateways in the local network.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";
@@ -561,8 +561,8 @@
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_NSFaceIDUsageDescription = "$(PRODUCT_NAME) Authentication with TouchId or FaceID";
-				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "$(PRODUCT_NAME) will discover ICC gateways in the local network.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Iris Authentication with TouchId or FaceID";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Iris will discover ICC gateways in the local network.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";

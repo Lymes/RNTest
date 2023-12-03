@@ -43,5 +43,7 @@
 		<string>DINPro-Light tr.ttf</string>
 		<string>DINPro-Medium tr.ttf</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 </dict>
 </plist>

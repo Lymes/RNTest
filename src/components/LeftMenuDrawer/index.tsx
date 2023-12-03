@@ -3,14 +3,16 @@ import {
   DrawerContentScrollView,
   DrawerItem,
   DrawerItemList,
-  DrawerNavigationProp,
   DrawerScreenProps,
 } from '@react-navigation/drawer';
 import {DrawerActions, ParamListBase} from '@react-navigation/native';
 import HomeScreen from '~screens/Home/HomeScreen';
 import {RootStackParamList} from '~navigation/RootStackPrams';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Button, Linking, SafeAreaView} from 'react-native';
+import {Linking} from 'react-native';
+import ImageButton from '~components/Buttons/ImageButton';
+import fileTree from 'assets/images/filetree.png';
+import config from 'assets/images/config.png';
 
 type LeftMenuDrawerProps = DrawerScreenProps<ParamListBase, 'LeftMenuDrawer'>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -22,10 +24,14 @@ function LeftMenuDrawer(props: LeftMenuDrawerProps) {
         name="Home"
         component={HomeScreen}
         options={{
+          statusBarHidden: false,
+          headerTintColor: 'white',
+          headerStyle: {backgroundColor: 'black'},
           // headerTitle: props => <LogoTitle {...props} />,
           headerRight: () => (
-            <Button
-              title="Drawer"
+            <ImageButton
+              style={{tintColor: 'white', width: 22, height: 22}}
+              image={config}
               onPress={() => {
                 props.navigation
                   .getParent()
@@ -34,7 +40,11 @@ function LeftMenuDrawer(props: LeftMenuDrawerProps) {
             />
           ),
           headerLeft: () => (
-            <Button title="Drawer" onPress={props.navigation.toggleDrawer} />
+            <ImageButton
+              style={{tintColor: 'white', width: 22, height: 22}}
+              image={fileTree}
+              onPress={props.navigation.toggleDrawer}
+            />
           ),
         }}
       />

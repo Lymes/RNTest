@@ -1,15 +1,11 @@
 import {
   DrawerContentComponentProps,
-  DrawerContentScrollView,
-  DrawerItem,
-  DrawerItemList,
   DrawerScreenProps,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 import {ParamListBase} from '@react-navigation/native';
 import {Button} from 'react-native';
 import {View} from 'react-native-animatable';
-import PrimaryButton from '~components/Buttons/PrimaryButton';
 import {
   LeftMenuDrawer,
   LeftMenuDrawerContent,
@@ -27,6 +23,9 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
         name="LeftMenuDrawer"
         component={LeftMenuDrawer}
         options={{
+          drawerStatusBarAnimation: 'none',
+          drawerHideStatusBarOnOpen: false,
+          drawerType: 'front',
           headerShown: false,
           title: 'Topology',
           drawerLabelStyle: {fontSize: 20, color: 'white'},
@@ -46,22 +45,9 @@ function RightMenuDrawerContent(props: DrawerContentComponentProps) {
     auth.signOut();
   };
   return (
-    // <View style={{flex: 1, backgroundColor: 'black'}}>
-    <DrawerContentScrollView {...props} style={{backgroundColor: 'black'}}>
-      <DrawerItemList {...props} />
-      <DrawerItem
-        label="Logout"
-        onPress={signOut}
-        style={{backgroundColor: 'white'}}
-      />
-    </DrawerContentScrollView>
-    // </View>
-
-    // <DrawerContentScrollView {...props} style={{backgroundColor: 'black'}}>
-    //   <View style={{backgroundColor: 'black'}}></View>
-    //   <DrawerItemList {...props} />
-    //   <DrawerItem label="Logout" onPress={signOut} />
-    // </DrawerContentScrollView>
+    <View style={{width: '100%'}}>
+      <Button title="Logout" onPress={signOut} color="white"></Button>
+    </View>
   );
 }
 

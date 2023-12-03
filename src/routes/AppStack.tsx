@@ -14,14 +14,17 @@ export const AppStack = () => {
         name="RightMenuDrawer"
         component={RightMenuDrawer}
         options={{
+          drawerStatusBarAnimation: 'none',
+          drawerHideStatusBarOnOpen: false,
+          drawerType: 'front',
           headerShown: false,
           drawerPosition: 'right',
-          title: 'Menu',
-          drawerActiveTintColor: 'white',
-          drawerLabelStyle: {fontSize: 20},
           drawerStyle: {
-            backgroundColor: '#c6cbef',
-            width: 240,
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'black',
+            width: 200,
           },
         }}
       />

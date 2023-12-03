@@ -1,10 +1,18 @@
 import React, {memo, useCallback, useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Dimensions, ScaledSize, ScrollView, Text, View} from 'react-native';
+import {
+  Dimensions,
+  ScaledSize,
+  ScrollView,
+  StatusBar,
+  Text,
+  View,
+} from 'react-native';
 import {RootStackParamList} from '~navigation/RootStackPrams';
 import {styles} from './HomeScreen.style';
 import {DraggableGrid} from '~components/Grid';
 import Orientation from 'react-native-orientation-locker';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -14,6 +22,7 @@ interface IItem {
 }
 
 export default function LoginScreen({navigation}: HomeProps) {
+  const insets = useSafeAreaInsets();
   const [data, setData] = useState<Array<IItem>>([
     {name: '1', key: 'one'},
     {name: '2', key: 'two'},
@@ -43,13 +52,27 @@ export default function LoginScreen({navigation}: HomeProps) {
   }, []);
 
   const renderItem = (item: {name: string; key: string}) => (
-    <View style={[styles.item, {width: size.width / 3 - 10}]} key={item.key}>
+    <View
+      style={[
+        styles.item,
+        {width: (size.width - insets.left - insets.right) / 3 - 10},
+      ]}
+      key={item.key}>
       <Text style={styles.item_text}>{item.name}</Text>
     </View>
   );
 
   return (
-    <View style={styles.wrapper}>
+    <View
+      style={[
+        styles.wrapper,
+        {
+          paddingTop: insets.top,
+          paddingBottom: insets.bottom,
+          paddingLeft: insets.left,
+          paddingRight: insets.right,
+        },
+      ]}>
       <ScrollView scrollEnabled={!dragging}>
         <DraggableGrid
           style={styles.bg}
