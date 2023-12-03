@@ -48,6 +48,8 @@ const AuthProvider: React.FC<Props> = ({children}) => {
   }
 
   const signIn = async (username: string, password: string) => {
+    setLoading(true);
+
     // call the service passing credential (username and password).
     const _authData = await authService.signIn(username, password);
 
@@ -58,6 +60,7 @@ const AuthProvider: React.FC<Props> = ({children}) => {
     // Persist the data in the Async Storage
     // to be recovered in the next user session.
     // AsyncStorage.setItem('@AuthData', JSON.stringify(_authData));
+    setLoading(false);
   };
 
   const signOut = async () => {

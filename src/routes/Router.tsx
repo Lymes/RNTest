@@ -4,16 +4,15 @@ import {NavigationContainer} from '@react-navigation/native';
 import {AppStack} from './AppStack';
 import {AuthStack} from './AuthStack';
 import {useAuth} from '~hooks/useAuth';
-import {Loader} from '~components/Loader/Loader';
+import Spinner from '~components/Spinner';
 
 export const Router = () => {
   const {authData, loading} = useAuth();
-
-  if (loading) {
-    return <Loader />;
-  }
   return (
     <NavigationContainer>
+      {loading ? (
+        <Spinner visible={loading} textContent={'Loading...'} />
+      ) : null}
       {authData ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );

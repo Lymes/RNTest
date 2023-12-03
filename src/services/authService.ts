@@ -15,7 +15,7 @@ const signIn = (username: string, _password: string): Promise<AuthData> => {
         username: username,
         name: 'LYMES',
       });
-    }, 1000);
+    }, 2000);
   });
 };
 

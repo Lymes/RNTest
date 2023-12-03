@@ -54,7 +54,7 @@ export default function LoginScreen({navigation}: HomeProps) {
         <DraggableGrid
           style={styles.bg}
           numColumns={3}
-          itemHeight={120}
+          itemHeight={110}
           data={data}
           renderItem={renderItem}
           onDragStart={() => setDragging(true)}
