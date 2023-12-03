@@ -4,5 +4,13 @@
 <dict>
 	<key>com.apple.developer.networking.wifi-info</key>
 	<true/>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>webcredentials:www.youus.it</string>
+	</array>
+	<key>keychain-access-groups</key>
+	<array>
+		<string>$(AppIdentifierPrefix)com.youus.IRIS</string>
+	</array>
 </dict>
 </plist>

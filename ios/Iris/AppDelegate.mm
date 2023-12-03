@@ -1,5 +1,5 @@
 #import "AppDelegate.h"
-
+#import "Orientation.h"
 #import <React/RCTBundleURLProvider.h>
 
 @implementation AppDelegate
@@ -27,6 +27,10 @@
 {
   UIView *view = [super createRootViewWithBridge:bridge moduleName:moduleName initProps:initPropsv];
   return view;
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+  return [Orientation getOrientation];
 }
 
 @end

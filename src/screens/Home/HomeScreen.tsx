@@ -4,6 +4,7 @@ import {Dimensions, ScaledSize, ScrollView, Text, View} from 'react-native';
 import {RootStackParamList} from '~navigation/RootStackPrams';
 import {styles} from './HomeScreen.style';
 import {DraggableGrid} from '~components/Grid';
+import Orientation from 'react-native-orientation-locker';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -35,6 +36,7 @@ export default function LoginScreen({navigation}: HomeProps) {
         setSize(window);
       },
     );
+    Orientation.unlockAllOrientations();
     return () => {
       stopSizeListener.remove();
     };

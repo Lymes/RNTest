@@ -11,6 +11,7 @@ import SettingsScreen from './Settings/SettingsScreen';
 import {LoginViewModel} from './LoginViewModel';
 import {styles} from './LoginScreen.style';
 import {useAuth} from '~hooks/useAuth';
+import Orientation from 'react-native-orientation-locker';
 
 const viewModel = new LoginViewModel();
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
@@ -32,6 +33,7 @@ export default function LoginScreen({navigation}: LoginProps) {
         throw err;
       }
     })();
+    Orientation.lockToPortrait();
   }, [viewModel.initLogin]);
 
   console.log('LoginScreen rendered');
@@ -50,6 +52,9 @@ export default function LoginScreen({navigation}: LoginProps) {
         />
         <Text style={styles.title}>IRIS</Text>
         <InputText
+          autoComplete="username"
+          autoCapitalize="none"
+          autoCorrect={false}
           defaultValue={viewModel.username}
           style={styles.credentialsInput}
           placeholder="Username"
@@ -58,6 +63,9 @@ export default function LoginScreen({navigation}: LoginProps) {
           }}
         />
         <InputText
+          autoComplete="password"
+          autoCapitalize="none"
+          autoCorrect={false}
           defaultValue={viewModel.password}
           style={styles.credentialsInput}
           placeholder="Password"
