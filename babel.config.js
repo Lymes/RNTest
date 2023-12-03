@@ -20,6 +20,7 @@ module.exports = {
            "~i18n": "./src/i18n"
          }
        }
-    ]
+    ],
+    'react-native-reanimated/plugin'
   ]
 };

@@ -1,27 +1,30 @@
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import HomeScreen from '~screens/Home/HomeScreen';
-import {RootStackParamList} from '~navigation/RootStackPrams';
-import {Button} from 'react-native';
-import {useAuth} from '~hooks/useAuth';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {
+  RightMenuDrawerContent,
+  RightMenuDrawer,
+} from '~components/RightMenuDrawer';
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Drawer = createDrawerNavigator();
 
 export const AppStack = () => {
-  const auth = useAuth();
-  const signOut = () => {
-    auth.signOut();
-  };
   return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
+    <Drawer.Navigator drawerContent={RightMenuDrawerContent}>
+      <Drawer.Screen
+        name="RightMenuDrawer"
+        component={RightMenuDrawer}
         options={{
-          // headerTitle: props => <LogoTitle {...props} />,
-          headerRight: () => <Button title="Sign Out" onPress={signOut} />,
+          headerShown: false,
+          drawerPosition: 'right',
+          title: 'Menu',
+          drawerActiveTintColor: 'white',
+          drawerLabelStyle: {fontSize: 20},
+          drawerStyle: {
+            backgroundColor: '#c6cbef',
+            width: 240,
+          },
         }}
       />
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 };
