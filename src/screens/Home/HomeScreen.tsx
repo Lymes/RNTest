@@ -1,65 +1,40 @@
-import React, {memo, useCallback, useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {
-  Dimensions,
-  ScaledSize,
-  ScrollView,
-  StatusBar,
-  Text,
-  View,
-} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 import {RootStackParamList} from '~navigation/RootStackPrams';
-import {styles} from './HomeScreen.style';
-import {DraggableGrid} from '~components/Grid';
-import Orientation from 'react-native-orientation-locker';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import useHomeScreenHooks from './useHomeScreenHooks';
+import {TopologyModule} from '~services/authService';
+import Item from './components/Item/Item';
+import ItemOverlay from './components/ItemOverlay/ItemOverlay';
+import DraggableGridView from '~components/DraggableGridView';
+import styles from './styles';
+import Orientation from 'react-native-orientation-locker';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
-interface IItem {
-  name: string;
-  key: string;
-}
-
 export default function LoginScreen({navigation}: HomeProps) {
   const insets = useSafeAreaInsets();
-  const [data, setData] = useState<Array<IItem>>([
-    {name: '1', key: 'one'},
-    {name: '2', key: 'two'},
-    {name: '3', key: 'three'},
-    {name: '4', key: 'four'},
-    {name: '5', key: 'five'},
-    {name: '6', key: 'six'},
-    {name: '7', key: 'seven'},
-    {name: '8', key: 'eight'},
-    {name: '9', key: 'night'},
-    {name: '0', key: 'zero'},
-  ]);
-  const [dragging, setDragging] = useState(false);
-  const [size, setSize] = useState<ScaledSize>(Dimensions.get('window'));
+  const {
+    isEditing,
+    data,
+    startEdit,
+    stopEdit,
+    onItemPress,
+    onDelPress,
+    onOrderChanged,
+  } = useHomeScreenHooks();
 
   useEffect(() => {
-    const stopSizeListener = Dimensions.addEventListener(
-      'change',
-      ({window, screen}: {window: ScaledSize; screen: ScaledSize}) => {
-        setSize(window);
-      },
-    );
     Orientation.unlockAllOrientations();
-    return () => {
-      stopSizeListener.remove();
-    };
   }, []);
 
-  const renderItem = (item: {name: string; key: string}) => (
-    <View
-      style={[
-        styles.item,
-        {width: (size.width - insets.left - insets.right) / 3 - 10},
-      ]}
-      key={item.key}>
-      <Text style={styles.item_text}>{item.name}</Text>
-    </View>
+  const renderItem = ({item}: {item: TopologyModule}) => (
+    <Item item={item} onItemPress={onItemPress} onItemLongPress={startEdit} />
+  );
+
+  const renderOnEditOverlay = ({index}: {index: number}) => (
+    <ItemOverlay onDelPress={onDelPress} index={index} />
   );
 
   return (
@@ -73,20 +48,26 @@ export default function LoginScreen({navigation}: HomeProps) {
           paddingRight: insets.right,
         },
       ]}>
-      <ScrollView scrollEnabled={!dragging}>
-        <DraggableGrid
-          style={styles.bg}
-          numColumns={3}
-          itemHeight={110}
-          data={data}
-          renderItem={renderItem}
-          onDragStart={() => setDragging(true)}
-          onDragRelease={(data: IItem[]) => {
-            setDragging(false);
-            setData(data);
-          }}
-        />
-      </ScrollView>
+      <DraggableGridView
+        style={styles.bg}
+        contentContainerStyle={styles.contentContainer}
+        itemContainerStyle={styles.itemContainer}
+        isEditing={isEditing}
+        numColumns={3}
+        itemHeight={100}
+        data={data}
+        shouldAnimOnRelease={true}
+        keyExtractor={({id}) => `${id}`}
+        onOrderChanged={onOrderChanged}
+        renderItem={renderItem}
+        renderOnEditOverlay={renderOnEditOverlay}
+      />
+      {/* {selectedItem && <Item item={selectedItem} />} */}
+      {isEditing && (
+        <TouchableOpacity style={styles.btn} onPress={stopEdit}>
+          <Text style={styles.text}>done</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 }

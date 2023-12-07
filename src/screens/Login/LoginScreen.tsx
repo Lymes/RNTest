@@ -12,7 +12,6 @@ import {LoginViewModel} from './LoginViewModel';
 import {styles} from './LoginScreen.style';
 import {useAuth} from '~hooks/useAuth';
 import Orientation from 'react-native-orientation-locker';
-import Spinner from '~components/Spinner';
 
 const viewModel = new LoginViewModel();
 type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;

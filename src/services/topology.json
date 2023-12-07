@@ -1,0 +1,62 @@
+[
+    {
+        "id": "1",
+        "areaId": null,
+        "name": "root"
+    },
+    {
+        "id": "2",
+        "areaId": "1",
+        "name": "piano terra"
+    },
+    {
+        "id": "3",
+        "areaId": "1",
+        "name": "primo piano"
+    },
+    {
+        "id": "4",
+        "areaId": "1",
+        "name": "seminterrato"
+    },
+    {
+        "id": "5",
+        "areaId": "4",
+        "name": "bagno"
+    },
+    {
+        "id": "6",
+        "areaId": "4",
+        "name": "sala"
+    },
+    {
+        "id": "7",
+        "areaId": "4",
+        "name": "laboratorio"
+    },
+    {
+        "id": "8",
+        "areaId": "2",
+        "name": "salone"
+    },
+    {
+        "id": "9",
+        "areaId": "2",
+        "name": "studio"
+    },
+    {
+        "id": "10",
+        "areaId": "3",
+        "name": "camera da letto 1"
+    },
+    {
+        "id": "11",
+        "areaId": "3",
+        "name": "camera da letto 2"
+    },
+    {
+        "id": "12",
+        "areaId": "3",
+        "name": "bagno"
+    }
+]

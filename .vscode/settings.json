@@ -1,5 +1,4 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode", /// TSX auto format on save Prettier
         "editor.formatOnSave": true,
@@ -20,5 +19,5 @@
         "typescript",
         "typescriptx"
     ],
-    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "disabled",
 }

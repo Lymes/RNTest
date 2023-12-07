@@ -17,6 +17,7 @@ module.exports = {
            "~redux": ["./src/redux"],     
            "~components": "./src/components",
            "~navigation": "./src/navigation",
+           "~constants": "./src/constants",
            "~i18n": "./src/i18n"
          }
        }
