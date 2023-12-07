@@ -21,12 +21,12 @@ export default () => {
 
   const onItemPress = useCallback((item: TopologyModule) => {
     console.log(item.name);
-    let selectedMod = item.id === '555' ? item.parent : item;
+    let selectedMod = item.id === '-1' ? item.parent : item;
     let children = [...(selectedMod?.children || [])];
     if (selectedMod !== undefined) {
       children = [
         {
-          id: '555',
+          id: '-1',
           name: '..',
           parent: selectedMod?.parent,
         },
