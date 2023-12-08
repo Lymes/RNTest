@@ -31,8 +31,8 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
           drawerLabelStyle: {fontSize: 20, color: 'white'},
           drawerStyle: {
             flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignItems: 'flex-start',
+            justifyContent: 'flex-start',
             backgroundColor: 'black',
             width: 200,
           },
