@@ -16,6 +16,7 @@ import PrimaryButton from '~components/Buttons/PrimaryButton';
 import {BluetoothViewModel} from './BluetoothViewModel';
 import {styles} from './BluetoothScreen.style';
 import InputText from '~components/Inputs/InputText';
+import useThemedStyles from '~hooks/useThemedStyles';
 
 type BluetoothProps = NativeStackScreenProps<RootStackParamList, 'BLE'>;
 const viewModel = new BluetoothViewModel();
@@ -24,6 +25,7 @@ const BleManagerModule = NativeModules.BleManager;
 const BleManagerEmitter = new NativeEventEmitter(BleManagerModule);
 
 export default function BluetoothScreen({navigation}: BluetoothProps) {
+  const style = useThemedStyles(styles);
   const [wifiSSID, setSSID] = useState<string | undefined>(undefined);
   const [isScanning, setIsScanning] = useState(false);
   const [logs, setLogs] = useState(Array<string>());
@@ -62,22 +64,23 @@ export default function BluetoothScreen({navigation}: BluetoothProps) {
 
   return (
     <KeyboardAvoidingView
-      style={styles.settingsPage}
+      style={style.settingsPage}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       enabled>
-      <Text style={styles.ssidLabel}>
+      <Text style={style.ssidLabel}>
         WiFi SSID: {wifiSSID || 'SSID not found'}
       </Text>
       <InputText
-        style={styles.credentialsInput}
+        style={style.credentialsInput}
         placeholder="Password"
+        placeholderTextColor="grey"
         secureTextEntry={true}
         onChangeText={(text: string) => {
           viewModel.wifiPassword = text;
         }}
       />
       <PrimaryButton
-        style={styles.sendButton}
+        style={style.sendButton}
         title="Send to IRIS"
         disabled={isScanning || viewModel.peripheral == undefined}
         onPress={async () => {
@@ -93,18 +96,21 @@ export default function BluetoothScreen({navigation}: BluetoothProps) {
           setIsScanning(false);
         }}
       />
-      <View style={styles.scanContainer}>
-        <Text style={styles.scanLabel}>Logs</Text>
+      <View style={style.scanContainer}>
+        <Text style={style.scanLabel}>Logs</Text>
         {isScanning ? (
           <ActivityIndicator
             size="large"
             color="#3275df"
-            style={styles.scanIndicator}
+            style={style.scanIndicator}
           />
         ) : null}
       </View>
-      <View style={styles.logContainer}>
-        <FlatList data={logs} renderItem={({item}) => <Text>{item}</Text>} />
+      <View style={style.logContainer}>
+        <FlatList
+          data={logs}
+          renderItem={({item}) => <Text style={style.logText}>{item}</Text>}
+        />
       </View>
     </KeyboardAvoidingView>
   );

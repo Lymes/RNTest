@@ -10,10 +10,12 @@ import ItemOverlay from './components/ItemOverlay/ItemOverlay';
 import DraggableGridView from '~components/DraggableGridView';
 import styles from './styles';
 import Orientation from 'react-native-orientation-locker';
+import useThemedStyles from '~hooks/useThemedStyles';
 
 type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function LoginScreen({navigation}: HomeProps) {
+  const style = useThemedStyles(styles);
   const insets = useSafeAreaInsets();
   const {
     isEditing,
@@ -40,22 +42,23 @@ export default function LoginScreen({navigation}: HomeProps) {
   return (
     <View
       style={[
-        styles.wrapper,
+        style.wrapper,
         {
-          paddingTop: insets.top,
+          paddingTop: 10,
           paddingBottom: insets.bottom,
           paddingLeft: insets.left,
           paddingRight: insets.right,
         },
       ]}>
       <DraggableGridView
-        style={styles.bg}
-        contentContainerStyle={styles.contentContainer}
-        itemContainerStyle={styles.itemContainer}
+        style={style.bg}
+        contentContainerStyle={style.contentContainer}
+        itemContainerStyle={style.itemContainer}
         isEditing={isEditing}
         numColumns={3}
         itemHeight={100}
         data={data}
+        animMoveDuration={900}
         shouldAnimOnRelease={true}
         keyExtractor={({id}) => `${id}`}
         onOrderChanged={onOrderChanged}
@@ -64,8 +67,8 @@ export default function LoginScreen({navigation}: HomeProps) {
       />
       {/* {selectedItem && <Item item={selectedItem} />} */}
       {isEditing && (
-        <TouchableOpacity style={styles.btn} onPress={stopEdit}>
-          <Text style={styles.text}>done</Text>
+        <TouchableOpacity style={style.btn} onPress={stopEdit}>
+          <Text style={style.text}>done</Text>
         </TouchableOpacity>
       )}
     </View>

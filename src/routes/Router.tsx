@@ -1,6 +1,5 @@
 import React from 'react';
-import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
-
+import {NavigationContainer} from '@react-navigation/native';
 import {AppStack} from './AppStack';
 import {AuthStack} from './AuthStack';
 import {useAuth} from '~hooks/useAuth';
@@ -9,16 +8,8 @@ import Spinner from '~components/Spinner';
 export const Router = () => {
   const {authData, loading} = useAuth();
 
-  const navTheme = {
-    ...DefaultTheme,
-    colors: {
-      ...DefaultTheme.colors,
-      background: 'white',
-    },
-  };
-
   return (
-    <NavigationContainer theme={navTheme}>
+    <NavigationContainer>
       {loading ? (
         <Spinner visible={loading} textContent={'Loading...'} />
       ) : null}

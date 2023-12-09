@@ -1,16 +1,19 @@
-import { useCallback } from 'react'
-import { IItem } from '../../TopologyModule'
+import {useCallback} from 'react';
+import {TopologyModule} from '~services/authService';
 
 export default ({
   item,
-  onItemPress
+  onItemPress,
 }: {
-  item: IItem
-  onItemPress?: (memberInfo: IItem) => void
+  item: TopologyModule;
+  onItemPress?: (memberInfo: TopologyModule) => void;
 }) => {
-  const onPress = useCallback(() => onItemPress && onItemPress(item), [item, onItemPress])
+  const onPress = useCallback(
+    () => onItemPress && onItemPress(item),
+    [item, onItemPress],
+  );
 
   return {
-    onPress
-  }
-}
+    onPress,
+  };
+};

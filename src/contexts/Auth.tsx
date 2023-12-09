@@ -1,4 +1,4 @@
-import React, {createContext, useState, useContext, useEffect} from 'react';
+import React, {createContext, useState, useEffect} from 'react';
 import {AuthData, authService} from '~services/authService';
 import * as Keychain from 'react-native-keychain';
 import RNUserDefaults from 'rn-user-defaults';

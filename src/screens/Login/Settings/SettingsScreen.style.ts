@@ -8,10 +8,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
   },
-  topRightButton: {
-    alignSelf: 'flex-end',
-    margin: 20,
-  },
   settingsColumn: {
     flex: 1,
     alignItems: 'stretch',
@@ -24,14 +20,15 @@ const styles = StyleSheet.create({
     gap: 5,
   },
   radioLabels: {
-    fontFamily: 'DINPro',
+    fontFamily: 'SF-Pro-Text-Regular',
+    color: 'black',
   },
   applyButton: {
     alignSelf: 'center',
     backgroundColor: '#3275df',
     color: 'white',
     borderRadius: 8,
-    fontFamily: 'DINPro',
+    fontFamily: 'SF-Pro-Text-Regular',
     fontSize: 16,
     width: '100%',
     height: 40,

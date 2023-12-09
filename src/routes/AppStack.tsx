@@ -4,10 +4,12 @@ import {
   RightMenuDrawerContent,
   RightMenuDrawer,
 } from '~components/RightMenuDrawer';
+import useTheme from '~hooks/useTheme';
 
 const Drawer = createDrawerNavigator();
 
 export const AppStack = () => {
+  const theme = useTheme();
   return (
     <Drawer.Navigator drawerContent={RightMenuDrawerContent}>
       <Drawer.Screen
@@ -23,7 +25,7 @@ export const AppStack = () => {
             flex: 1,
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: 'black',
+            backgroundColor: theme.colors.drawerBackground,
             width: 200,
           },
         }}

@@ -12,12 +12,12 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		19A5BFD6B75645AD8F7C0C98 /* DINPro-Black tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Iris-IrisTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Iris-IrisTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		886367C859FB4C728A0C7D9A /* DINPro-Medium tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */; };
-		B9073BFCAA0A4233814D396E /* DINPro-Bold tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */; };
-		DC2537F279294D87B9A4CBBD /* DINPro-Light tr.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */; };
+		5BC0FC5E1D9C4B67927F5C40 /* SF-Pro-Text-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2CE6C1815CA84DDBBBFE8E39 /* SF-Pro-Text-Bold.ttf */; };
+		9EC44BB8E2CF4E50B21064D5 /* SF-Pro-Text-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFE1A46233A84D8E913974ED /* SF-Pro-Text-Light.ttf */; };
+		B8836A13F9F54755BC4687B9 /* SF-Pro-Text-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1BF3187179664A59951E80E2 /* SF-Pro-Text-Medium.ttf */; };
+		52CE0B2C488E423CB31F60AB /* SF-Pro-Text-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E3B0EBAF330424FA0053427 /* SF-Pro-Text-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,6 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Iris/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Iris/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Iris-IrisTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Iris-IrisTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DINPro-Light tr.ttf"; path = "../assets/fonts/DINPro-Light tr.ttf"; sourceTree = "<group>"; };
-		37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DINPro-Bold tr.ttf"; path = "../assets/fonts/DINPro-Bold tr.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-Iris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris.debug.xcconfig"; path = "Target Support Files/Pods-Iris/Pods-Iris.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Iris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris.release.xcconfig"; path = "Target Support Files/Pods-Iris/Pods-Iris.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Iris-IrisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.debug.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,9 +48,11 @@
 		78A1ECF42B12718200EC26A0 /* Iris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Iris.entitlements; path = Iris/Iris.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Iris/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Iris-IrisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.release.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.release.xcconfig"; sourceTree = "<group>"; };
-		D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DINPro-Black tr.ttf"; path = "../assets/fonts/DINPro-Black tr.ttf"; sourceTree = "<group>"; };
-		DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "DINPro-Medium tr.ttf"; path = "../assets/fonts/DINPro-Medium tr.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		2CE6C1815CA84DDBBBFE8E39 /* SF-Pro-Text-Bold.ttf */ = {isa = PBXFileReference; name = "SF-Pro-Text-Bold.ttf"; path = "../assets/fonts/SF-Pro-Text-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CFE1A46233A84D8E913974ED /* SF-Pro-Text-Light.ttf */ = {isa = PBXFileReference; name = "SF-Pro-Text-Light.ttf"; path = "../assets/fonts/SF-Pro-Text-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1BF3187179664A59951E80E2 /* SF-Pro-Text-Medium.ttf */ = {isa = PBXFileReference; name = "SF-Pro-Text-Medium.ttf"; path = "../assets/fonts/SF-Pro-Text-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2E3B0EBAF330424FA0053427 /* SF-Pro-Text-Regular.ttf */ = {isa = PBXFileReference; name = "SF-Pro-Text-Regular.ttf"; path = "../assets/fonts/SF-Pro-Text-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +78,10 @@
 		00C4289CB9E3470EB2740934 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D706384A885746AFBA40A1CA /* DINPro-Black tr.ttf */,
-				37AC46F50AB7409F985367B2 /* DINPro-Bold tr.ttf */,
-				2956B056DD424469B805F7B0 /* DINPro-Light tr.ttf */,
-				DCEB7235801C40818526DE8C /* DINPro-Medium tr.ttf */,
+				2CE6C1815CA84DDBBBFE8E39 /* SF-Pro-Text-Bold.ttf */,
+				CFE1A46233A84D8E913974ED /* SF-Pro-Text-Light.ttf */,
+				1BF3187179664A59951E80E2 /* SF-Pro-Text-Medium.ttf */,
+				2E3B0EBAF330424FA0053427 /* SF-Pro-Text-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -266,10 +266,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				19A5BFD6B75645AD8F7C0C98 /* DINPro-Black tr.ttf in Resources */,
-				B9073BFCAA0A4233814D396E /* DINPro-Bold tr.ttf in Resources */,
-				DC2537F279294D87B9A4CBBD /* DINPro-Light tr.ttf in Resources */,
-				886367C859FB4C728A0C7D9A /* DINPro-Medium tr.ttf in Resources */,
+				5BC0FC5E1D9C4B67927F5C40 /* SF-Pro-Text-Bold.ttf in Resources */,
+				9EC44BB8E2CF4E50B21064D5 /* SF-Pro-Text-Light.ttf in Resources */,
+				B8836A13F9F54755BC4687B9 /* SF-Pro-Text-Medium.ttf in Resources */,
+				52CE0B2C488E423CB31F60AB /* SF-Pro-Text-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

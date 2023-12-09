@@ -18,6 +18,7 @@ module.exports = {
            "~components": "./src/components",
            "~navigation": "./src/navigation",
            "~constants": "./src/constants",
+           "~themes": "./src/themes",
            "~i18n": "./src/i18n"
          }
        }

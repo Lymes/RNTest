@@ -11,12 +11,14 @@ import {
   LeftMenuDrawerContent,
 } from '~components/LeftMenuDrawer';
 import {useAuth} from '~hooks/useAuth';
+import useTheme from '~hooks/useTheme';
 
 type RightMenuDrawerProps = DrawerScreenProps<ParamListBase, 'RightMenuDrawer'>;
 
 const LeftDrawer = createDrawerNavigator();
 
 function RightMenuDrawer(props: RightMenuDrawerProps) {
+  const theme = useTheme();
   return (
     <LeftDrawer.Navigator drawerContent={LeftMenuDrawerContent}>
       <LeftDrawer.Screen
@@ -33,7 +35,7 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
             flex: 1,
             alignItems: 'flex-start',
             justifyContent: 'flex-start',
-            backgroundColor: 'black',
+            backgroundColor: theme.colors.drawerBackground,
             width: 200,
           },
         }}
