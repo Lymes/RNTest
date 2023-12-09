@@ -32,7 +32,7 @@ const styles = (theme: ThemeContextData) => {
     },
     text: {
       fontSize: theme.typography.size.medium,
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.light,
       fontWeight: '900',
       color: 'white',
     },

@@ -72,19 +72,19 @@ export class SettingsViewModel {
       id: LoginMethod.CLOUD,
       label: 'Use Cloud',
       value: LoginMethod.CLOUD,
-      labelStyle: styles.radioLabels,
+      labelStyle: {fontFamily: 'SF-Pro-Text-Regular', color: 'black'},
     },
     {
       id: LoginMethod.MANUAL,
       label: 'Manual',
       value: LoginMethod.MANUAL,
-      labelStyle: styles.radioLabels,
+      labelStyle: {fontFamily: 'SF-Pro-Text-Regular', color: 'black'},
     },
     {
       id: LoginMethod.DISCOVERY,
       label: 'Discovery',
       value: LoginMethod.DISCOVERY,
-      labelStyle: styles.radioLabels,
+      labelStyle: {fontFamily: 'SF-Pro-Text-Regular', color: 'black'},
     },
   ];
 

@@ -14,23 +14,29 @@ import {useAuth} from '~hooks/useAuth';
 import TreeView from '~components/TreeView';
 import {Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
+import useTheme from '~hooks/useTheme';
 
 type LeftMenuDrawerProps = DrawerScreenProps<ParamListBase, 'LeftMenuDrawer'>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function LeftMenuDrawer(props: LeftMenuDrawerProps) {
+  const theme = useTheme();
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          headerTintColor: 'white',
-          headerStyle: {backgroundColor: 'black'},
+          headerTintColor: theme.colors.headerTint,
+          headerStyle: {backgroundColor: theme.colors.headerBackground},
           // headerTitle: props => <LogoTitle {...props} />,
           headerRight: () => (
             <ImageButton
-              style={{tintColor: 'white', width: 22, height: 22}}
+              style={{
+                tintColor: theme.colors.headerTint,
+                width: 22,
+                height: 22,
+              }}
               image={config}
               onPress={() => {
                 props.navigation
@@ -41,7 +47,11 @@ function LeftMenuDrawer(props: LeftMenuDrawerProps) {
           ),
           headerLeft: () => (
             <ImageButton
-              style={{tintColor: 'white', width: 22, height: 22}}
+              style={{
+                tintColor: theme.colors.headerTint,
+                width: 22,
+                height: 22,
+              }}
               image={fileTree}
               onPress={props.navigation.toggleDrawer}
             />

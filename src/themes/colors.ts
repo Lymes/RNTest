@@ -13,34 +13,46 @@ export type Colors = {
   primary: string;
   secondary: string;
   background: string;
+  primaryForeground: string;
   primaryBackground: string;
   secondaryBackground: string;
   drawerBackground: string;
+  headerBackground: string;
+  headerTint: string;
   cardBackground: string;
+  cardTint: string;
   borderColor: string;
   error: string;
 };
 
 const light: Colors = {
-  primary: 'black',
+  primary: '#141e1d',
   secondary: SILVER,
-  background: 'white',
+  background: '#ccd4dd',
+  primaryForeground: 'white',
   primaryBackground: BLUE,
   secondaryBackground: ASBESTOS,
-  drawerBackground: MIDNIGHT_BLUE,
+  drawerBackground: '#446063',
+  headerBackground: '#446063',
+  headerTint: '#f9f9f9',
   cardBackground: SUN_FLOWER,
+  cardTint: 'black',
   borderColor: 'grey',
   error: 'red',
 };
 
 const dark = {
-  primary: 'white',
+  primary: '#ccd4dd',
   secondary: 'grey',
-  background: 'black',
+  background: '#141e1d',
+  primaryForeground: 'white',
   primaryBackground: BLUE,
   secondaryBackground: ASBESTOS,
-  drawerBackground: MIDNIGHT_BLUE,
+  drawerBackground: '#446063',
+  headerBackground: '#446063',
+  headerTint: '#f9f9f9',
   cardBackground: SUN_FLOWER,
+  cardTint: 'black',
   borderColor: 'grey',
   error: 'red',
 };

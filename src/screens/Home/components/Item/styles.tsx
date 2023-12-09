@@ -20,9 +20,9 @@ const styles = (theme: ThemeContextData) => {
     itemText: {
       width: '100%',
       height: '100%',
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.light,
       fontSize: theme.typography.size.medium,
-      color: theme.colors.primary,
+      color: theme.colors.cardTint,
     },
   });
 };

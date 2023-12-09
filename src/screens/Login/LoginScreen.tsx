@@ -19,7 +19,6 @@ type LoginProps = NativeStackScreenProps<RootStackParamList, 'Login'>;
 
 export default function LoginScreen({navigation}: LoginProps) {
   const style = useThemedStyles(styles);
-
   const [hasCredentials, setGotCredentials] = useState<boolean>(false);
   const auth = useAuth();
 

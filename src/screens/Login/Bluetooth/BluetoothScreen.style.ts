@@ -14,14 +14,14 @@ const styles = (theme: ThemeContextData) => {
       marginTop: 30,
       alignSelf: 'flex-start',
       justifyContent: 'center',
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.bold,
       color: theme.colors.primary,
       fontSize: theme.typography.size.medium,
       height: 40,
     },
     credentialsInput: {
       alignSelf: 'center',
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.regular,
       justifyContent: 'center',
       width: '100%',
       height: 40,
@@ -32,9 +32,9 @@ const styles = (theme: ThemeContextData) => {
     sendButton: {
       alignSelf: 'center',
       backgroundColor: theme.colors.primaryBackground,
-      color: theme.colors.background,
+      color: theme.colors.primaryForeground,
       borderRadius: 8,
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.regular,
       fontSize: theme.typography.size.small,
       width: '100%',
       height: 40,
@@ -54,7 +54,7 @@ const styles = (theme: ThemeContextData) => {
     scanLabel: {
       alignSelf: 'flex-start',
       justifyContent: 'center',
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.regular,
       color: theme.colors.primary,
       fontSize: theme.typography.size.medium,
       height: 40,
@@ -72,7 +72,7 @@ const styles = (theme: ThemeContextData) => {
     },
     logText: {
       color: theme.colors.primary,
-      fontFamily: theme.typography.family,
+      fontFamily: theme.typography.family.light,
     },
   });
 };

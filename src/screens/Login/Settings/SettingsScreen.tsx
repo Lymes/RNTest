@@ -10,10 +10,12 @@ import {LoginSelector} from '~components/LoginSelector/LoginSelector';
 import {setDiscoveredAddress} from '~redux/LoginMethodSlice';
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '~redux/hooks';
+import useThemedStyles from '~hooks/useThemedStyles';
 
 const viewModel = new SettingsViewModel();
 
 export default function SettingsScreen() {
+  const style = useThemedStyles(styles);
   const loginMethod = useAppSelector(state => state.loginMethod);
   const dispatch = useDispatch();
 
@@ -34,14 +36,14 @@ export default function SettingsScreen() {
   }, []);
 
   return (
-    <View style={styles.settingsPage}>
+    <View style={style.settingsPage}>
       <KeyboardAvoidingView
-        style={styles.settingsColumn}
+        style={style.settingsColumn}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled>
         <LoginSelector />
         <RadioGroup
-          containerStyle={styles.radioGroup}
+          containerStyle={style.radioGroup}
           radioButtons={viewModel.radioButtons}
           onPress={async loginMethod => {
             viewModel.setLoginMethod(loginMethod, dispatch);
@@ -49,7 +51,7 @@ export default function SettingsScreen() {
           selectedId={loginMethod.value}
         />
         <PrimaryButton
-          style={styles.applyButton}
+          style={style.applyButton}
           onPress={async () => {
             viewModel.saveLoginInfo(loginMethod.value, loginMethod.ipAddress);
             SheetManager.hide('settingsSheet');

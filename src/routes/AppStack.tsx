@@ -24,7 +24,7 @@ export const AppStack = () => {
           drawerStyle: {
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'flex-start',
             backgroundColor: theme.colors.drawerBackground,
             width: 200,
           },

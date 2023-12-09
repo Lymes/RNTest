@@ -5,7 +5,8 @@ import {
 } from '@react-navigation/drawer';
 import {ParamListBase} from '@react-navigation/native';
 import {Button} from 'react-native';
-import {View} from 'react-native-animatable';
+import {Text, View} from 'react-native-animatable';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 import {
   LeftMenuDrawer,
   LeftMenuDrawerContent,
@@ -30,7 +31,10 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
           drawerType: 'front',
           headerShown: false,
           title: 'Topology',
-          drawerLabelStyle: {fontSize: 20, color: 'white'},
+          drawerLabelStyle: {
+            fontSize: theme.typography.size.medium,
+            color: theme.colors.cardBackground,
+          },
           drawerStyle: {
             flex: 1,
             alignItems: 'flex-start',
@@ -45,13 +49,23 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
 }
 
 function RightMenuDrawerContent(props: DrawerContentComponentProps) {
+  const theme = useTheme();
   const auth = useAuth();
   const signOut = () => {
     auth.signOut();
   };
   return (
-    <View style={{width: '100%'}}>
-      <Button title="Logout" onPress={signOut} color="white"></Button>
+    <View style={{marginTop: 80, width: '80%', height: '100%'}}>
+      <TouchableOpacity onPress={signOut}>
+        <Text
+          style={{
+            color: theme.colors.primaryForeground,
+            fontSize: theme.typography.size.medium,
+            fontFamily: theme.typography.family.regular,
+          }}>
+          Logout
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
