@@ -15,6 +15,8 @@ import TreeView from '~components/TreeView';
 import {Text} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import useTheme from '~hooks/useTheme';
+import {useDispatch} from 'react-redux';
+import {setSelectedModule} from '~redux/SelectedModuleSlice';
 
 type LeftMenuDrawerProps = DrawerScreenProps<ParamListBase, 'LeftMenuDrawer'>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -64,6 +66,7 @@ function LeftMenuDrawer(props: LeftMenuDrawerProps) {
 
 function LeftMenuDrawerContent(props: DrawerContentComponentProps) {
   const {authData} = useAuth();
+  const dispatch = useDispatch();
 
   const roots =
     authData?.topology.filter(m => {
@@ -80,6 +83,9 @@ function LeftMenuDrawerContent(props: DrawerContentComponentProps) {
       <TreeView
         data={roots} // defined above
         initialExpanded={true}
+        onNodePress={module => {
+          dispatch(setSelectedModule(module.node.id));
+        }}
         renderNode={({node, level, isExpanded, hasChildrenNodes}) => {
           return (
             <View>

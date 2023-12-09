@@ -2,9 +2,12 @@ import {useCallback, useState} from 'react';
 import update from 'immutability-helper';
 import {TopologyModule} from '~services/authService';
 import {useAuth} from '~hooks/useAuth';
+import {useAppSelector} from '~redux/hooks';
 
 export default () => {
   const {authData} = useAuth();
+  const selectedModuleId = useAppSelector(state => state.selectedModule);
+  console.log('Selected Module', selectedModuleId);
 
   const roots =
     authData?.topology.filter(m => {

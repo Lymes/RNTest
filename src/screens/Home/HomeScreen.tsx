@@ -39,6 +39,7 @@ export default function LoginScreen({navigation}: HomeProps) {
     <ItemOverlay onDelPress={onDelPress} index={index} />
   );
 
+  console.log('RENDER HOME');
   return (
     <View
       style={[
