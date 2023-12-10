@@ -9,7 +9,7 @@
     "start": "react-native start",
     "test": "jest",
     "clear-all": "watchman watch-del-all; rm -rf ./ios/build; rm -rf $TMPDIR/react-*;rm -rf $TMPDIR/haste-*; rm -rf $TMPDIR/metro-*; npm cache verify; npm install; npm start --reset-cache",
-    "run-ios-release": "npx react-native run-ios --mode Release #ios",
+    "run-ios-release": "npx react-native run-ios --mode Release #ios --device 'Lymes iPhone12Pro'",
     "run-android-release": "npx react-native run-android --mode release #android",
     "run-ios-debug": "npx react-native run-ios --simulator='iPhone 15'",
     "assets": "npx react-native-asset"

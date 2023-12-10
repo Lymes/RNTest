@@ -16,7 +16,7 @@ export type Families = {
 };
 
 const size: Sizes = {
-  tiny: 5,
+  tiny: 10,
   small: 16,
   medium: 20,
   large: 30,

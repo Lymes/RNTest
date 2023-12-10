@@ -37,6 +37,7 @@ const PrimaryButton: React.FC<Props> = (props: Props) => {
               height: undefined,
               textAlignVertical: 'center',
               textAlign: 'center',
+              backgroundColor: 'transparent',
               color: props.style?.color,
             },
           ]}>

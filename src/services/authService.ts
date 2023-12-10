@@ -1,10 +1,15 @@
 import Topology from './topology.json';
 
+export enum TopologyModuleType {
+  AREA = 'area',
+  RELAY = 'relay',
+}
+
 export type TopologyModule = {
   id: string;
   areaId?: string;
   name: string;
-  type: string;
+  type: TopologyModuleType;
   keytype?: string;
   children?: TopologyModule[];
   parent?: TopologyModule;

@@ -24,6 +24,10 @@ const styles = (theme: ThemeContextData) => {
       fontSize: theme.typography.size.tiny,
       color: theme.colors.cardTint,
     },
+    icon: {
+      width: 32,
+      height: 32,
+    },
   });
 };
 
