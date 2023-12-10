@@ -18,6 +18,7 @@ export default function LoginScreen({navigation}: HomeProps) {
   const style = useThemedStyles(styles);
   const insets = useSafeAreaInsets();
   const {
+    selectedModule,
     isEditing,
     data,
     startEdit,

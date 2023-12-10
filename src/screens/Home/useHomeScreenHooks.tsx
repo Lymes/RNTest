@@ -3,11 +3,13 @@ import update from 'immutability-helper';
 import {TopologyModule} from '~services/authService';
 import {useAuth} from '~hooks/useAuth';
 import {useAppSelector} from '~redux/hooks';
+import {useDispatch} from 'react-redux';
+import {setSelectedModule} from '~redux/SelectedModuleSlice';
 
 export default () => {
   const {authData} = useAuth();
-  const selectedModuleId = useAppSelector(state => state.selectedModule);
-  console.log('Selected Module', selectedModuleId);
+  const selectedModuleState = useAppSelector(state => state.selectedModule);
+  const dispatch = useDispatch();
 
   const roots =
     authData?.topology.filter(m => {
@@ -16,45 +18,47 @@ export default () => {
 
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const [data, setData] = useState<Array<TopologyModule>>(roots);
+  let selectedModule = authData?.topology.find(
+    m => m.id === selectedModuleState.id,
+  );
+  console.log('find:', selectedModule?.name);
+  let children = [...(selectedModule?.children || [])];
+  if (selectedModule !== undefined) {
+    children = [
+      {
+        id: '-1',
+        name: '..',
+        parent: selectedModule?.parent,
+      },
+      ...children,
+    ];
+  } else {
+    children = [...roots];
+  }
+  let varData = children;
 
   const startEdit = useCallback(() => setIsEditing(true), []);
-
   const stopEdit = useCallback(() => setIsEditing(false), []);
 
   const onItemPress = useCallback((item: TopologyModule) => {
     console.log(item.name);
     let selectedMod = item.id === '-1' ? item.parent : item;
-    let children = [...(selectedMod?.children || [])];
-    if (selectedMod !== undefined) {
-      children = [
-        {
-          id: '-1',
-          name: '..',
-          parent: selectedMod?.parent,
-        },
-        ...children,
-      ];
-    } else {
-      children = [...roots];
-    }
-    setData(children);
+    dispatch(setSelectedModule(selectedMod?.id || '-1'));
   }, []);
 
-  const onDelPress = useCallback(
-    (index: number) => {
-      const newData = update(data, {$splice: [[index, 1]]});
-      setData(newData);
-    },
-    [data],
-  );
+  const onDelPress = useCallback((index: number) => {
+    const newData = update(varData, {$splice: [[index, 1]]});
+    varData = newData;
+  }, []);
 
-  const onOrderChanged = useCallback(
-    (orderedData: Array<TopologyModule>) => setData(orderedData),
-    [],
-  );
+  const onOrderChanged = useCallback((orderedData: Array<TopologyModule>) => {
+    varData = orderedData;
+  }, []);
+
+  const data = varData;
 
   return {
+    selectedModule,
     isEditing,
     data,
     startEdit,
