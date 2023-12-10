@@ -18,7 +18,6 @@ export default function LoginScreen({navigation}: HomeProps) {
   const style = useThemedStyles(styles);
   const insets = useSafeAreaInsets();
   const {
-    selectedModule,
     isEditing,
     data,
     startEdit,
@@ -40,7 +39,7 @@ export default function LoginScreen({navigation}: HomeProps) {
     <ItemOverlay onDelPress={onDelPress} index={index} />
   );
 
-  console.log('RENDER HOME');
+  console.log('RENDER HOME', data.length);
   return (
     <View
       style={[

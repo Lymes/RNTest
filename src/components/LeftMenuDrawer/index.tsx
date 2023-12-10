@@ -17,12 +17,15 @@ import {ScrollView} from 'react-native-gesture-handler';
 import useTheme from '~hooks/useTheme';
 import {useDispatch} from 'react-redux';
 import {setSelectedModule} from '~redux/SelectedModuleSlice';
+import {useAppSelector} from '~redux/hooks';
 
 type LeftMenuDrawerProps = DrawerScreenProps<ParamListBase, 'LeftMenuDrawer'>;
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function LeftMenuDrawer(props: LeftMenuDrawerProps) {
   const theme = useTheme();
+  const selectedModuleState = useAppSelector(state => state.selectedModule);
+
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -31,6 +34,17 @@ function LeftMenuDrawer(props: LeftMenuDrawerProps) {
         options={{
           headerTintColor: theme.colors.headerTint,
           headerStyle: {backgroundColor: theme.colors.headerBackground},
+          headerTitle: props => (
+            <Text
+              {...props}
+              style={{
+                color: theme.colors.headerTint,
+                fontSize: theme.typography.size.medium,
+                fontFamily: theme.typography.family.bold,
+              }}>
+              {selectedModuleState.name || 'Home'}
+            </Text>
+          ),
           // headerTitle: props => <LogoTitle {...props} />,
           headerRight: () => (
             <ImageButton
@@ -84,7 +98,12 @@ function LeftMenuDrawerContent(props: DrawerContentComponentProps) {
         data={roots} // defined above
         initialExpanded={true}
         onNodePress={module => {
-          dispatch(setSelectedModule(module.node.id));
+          dispatch(
+            setSelectedModule({
+              id: module.node.id,
+              name: module.node.name,
+            }),
+          );
         }}
         renderNode={({node, level, isExpanded, hasChildrenNodes}) => {
           return (
