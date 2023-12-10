@@ -19,7 +19,7 @@ export const selectedModuleSlice = createSlice({
   reducers: {
     setSelectedModule: (
       state,
-      action: PayloadAction<{id: string; name: string}>,
+      action: PayloadAction<{id?: string; name?: string}>,
     ) => {
       state.id = action.payload.id;
       state.name = action.payload.name;

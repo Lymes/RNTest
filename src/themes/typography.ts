@@ -1,4 +1,7 @@
+import {Platform} from 'react-native';
+
 export type Sizes = {
+  tiny: number;
   small: number;
   medium: number;
   large: number;
@@ -13,6 +16,7 @@ export type Families = {
 };
 
 const size: Sizes = {
+  tiny: 5,
   small: 16,
   medium: 20,
   large: 30,
@@ -20,17 +24,18 @@ const size: Sizes = {
 };
 
 const letterSpacing: Sizes = {
-  small: 2,
+  tiny: 2,
+  small: 3,
   medium: 5,
   large: 10,
   huge: 15,
 };
 
 const family = {
-  bold: 'SF-Pro-Text-Bold',
-  light: 'SF-Pro-Text-Light',
-  medium: 'SF-Pro-Text-Medium',
-  regular: 'SF-Pro-Text-Regular',
+  bold: 'SFProText-Bold',
+  light: 'SFProText-Light',
+  medium: 'SFProText-Medium',
+  regular: 'SFProText-Regular',
 };
 
 export type Typography = {

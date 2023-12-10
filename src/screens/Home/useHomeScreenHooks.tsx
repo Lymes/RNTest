@@ -16,12 +16,19 @@ export default () => {
     let selectedModule = authData?.topology.find(
       m => m.id === selectedModuleState.id,
     );
+    if (selectedModule == undefined) {
+      setData([...roots]);
+    }
+    if (selectedModule?.type != 'area') {
+      return;
+    }
     let children = [...(selectedModule?.children || [])];
     if (selectedModule !== undefined) {
       children = [
         {
           id: '-1',
           name: '..',
+          type: 'area',
           parent: selectedModule?.parent,
         },
         ...children,
@@ -46,8 +53,8 @@ export default () => {
     let selectedMod = item.id === '-1' ? item.parent : item;
     dispatch(
       setSelectedModule({
-        id: selectedMod?.id || '-1',
-        name: selectedMod?.name || 'Home',
+        id: selectedMod?.id,
+        name: selectedMod?.name,
       }),
     );
   }, []);
@@ -62,6 +69,7 @@ export default () => {
   }, []);
 
   return {
+    selectedModuleState,
     isEditing,
     data,
     startEdit,

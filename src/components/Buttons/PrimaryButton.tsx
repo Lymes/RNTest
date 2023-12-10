@@ -26,12 +26,16 @@ const PrimaryButton: React.FC<Props> = (props: Props) => {
           },
         ]}>
         <Text
+          textBreakStrategy="simple"
           style={[
             props.style,
             {
+              borderRadius: undefined,
               marginTop: undefined,
-              backgroundColor: undefined,
+              marginBottom: undefined,
+              margin: undefined,
               height: undefined,
+              textAlignVertical: 'center',
               textAlign: 'center',
               color: props.style?.color,
             },

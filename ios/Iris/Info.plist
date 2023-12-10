@@ -38,10 +38,10 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Text-Bold.ttf</string>
-		<string>SF-Pro-Text-Light.ttf</string>
-		<string>SF-Pro-Text-Medium.ttf</string>
-		<string>SF-Pro-Text-Regular.ttf</string>
+		<string>SFProText-Bold.ttf</string>
+		<string>SFProText-Light.ttf</string>
+		<string>SFProText-Medium.ttf</string>
+		<string>SFProText-Regular.ttf</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>

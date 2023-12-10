@@ -4,6 +4,8 @@ export type TopologyModule = {
   id: string;
   areaId?: string;
   name: string;
+  type: string;
+  keytype?: string;
   children?: TopologyModule[];
   parent?: TopologyModule;
 };
