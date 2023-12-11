@@ -4,7 +4,6 @@ import {
   createDrawerNavigator,
 } from '@react-navigation/drawer';
 import {ParamListBase, useNavigation} from '@react-navigation/native';
-import {Button} from 'react-native';
 import {Text, View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {
