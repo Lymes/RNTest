@@ -67,15 +67,12 @@ const AuthProvider: React.FC<Props> = ({children}) => {
   const signOut = async () => {
     //Remove data from context, so the App can be notified
     //and send the user to the AuthStack
-    setLoading(true);
     setAuthData(undefined);
-
     // Remove the data from Async Storage
     // to NOT be recoverede in next session.
     // await AsyncStorage.removeItem('@AuthData');
     await Keychain.resetGenericPassword();
     await RNUserDefaults.set('useBiometric', 'false');
-    setLoading(false);
   };
 
   return (
