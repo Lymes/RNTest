@@ -83,7 +83,13 @@ export default function LoginScreen({navigation}: LoginProps) {
           title="Login"
           onPress={async () => {
             viewModel.loginPressed();
-            await auth.signIn(viewModel.username, viewModel.password);
+            const logged = await auth.signIn(
+              viewModel.username,
+              viewModel.password,
+            );
+            if (logged) {
+              navigation.navigate('Home');
+            }
           }}
         />
         <PrimaryButton

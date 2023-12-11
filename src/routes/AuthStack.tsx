@@ -5,6 +5,7 @@ import {RootStackParamList} from '~navigation/RootStackPrams';
 import SettingsScreen from '~screens/Login/Settings/SettingsScreen';
 import BluetoothScreen from '~screens/Login/Bluetooth/BluetoothScreen';
 import useTheme from '~hooks/useTheme';
+import {AppStack} from './AppStack';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,6 +18,11 @@ export const AuthStack = () => {
           options={{headerShown: false}}
           name="Login"
           component={LoginScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false, animation: 'fade'}}
+          name="Home"
+          component={AppStack}
         />
       </Stack.Group>
       <Stack.Group

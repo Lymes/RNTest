@@ -6,7 +6,7 @@ import RNUserDefaults from 'rn-user-defaults';
 export type AuthContextData = {
   authData?: AuthData;
   loading: boolean;
-  signIn(username: string, password: string): Promise<void>;
+  signIn(username: string, password: string): Promise<boolean>;
   signOut(): void;
 };
 
@@ -61,6 +61,7 @@ const AuthProvider: React.FC<Props> = ({children}) => {
     // to be recovered in the next user session.
     // AsyncStorage.setItem('@AuthData', JSON.stringify(_authData));
     setLoading(false);
+    return _authData !== null;
   };
 
   const signOut = async () => {

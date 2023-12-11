@@ -3,7 +3,7 @@ import {
   DrawerScreenProps,
   createDrawerNavigator,
 } from '@react-navigation/drawer';
-import {ParamListBase} from '@react-navigation/native';
+import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {Button} from 'react-native';
 import {Text, View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -51,8 +51,10 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
 function RightMenuDrawerContent(props: DrawerContentComponentProps) {
   const theme = useTheme();
   const auth = useAuth();
+  const navigation = useNavigation();
   const signOut = () => {
     auth.signOut();
+    navigation.goBack();
   };
   return (
     <View style={{marginTop: 80, width: '80%', height: '100%'}}>

@@ -14,7 +14,8 @@ export const Router = () => {
       {loading ? (
         <Spinner visible={loading} textContent={'Loading...'} />
       ) : null}
-      {authData ? <AppStack /> : <AuthStack />}
+      {/* {authData ? <AppStack /> : <AuthStack />} */}
+      <AuthStack />
     </NavigationContainer>
   );
 };
