@@ -6,12 +6,14 @@ import {
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {Text, View} from 'react-native-animatable';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {useDispatch} from 'react-redux';
 import {
   LeftMenuDrawer,
   LeftMenuDrawerContent,
 } from '~components/LeftMenuDrawer';
 import {useAuth} from '~hooks/useAuth';
 import useTheme from '~hooks/useTheme';
+import {setSelectedModule} from '~redux/SelectedModuleSlice';
 
 type RightMenuDrawerProps = DrawerScreenProps<ParamListBase, 'RightMenuDrawer'>;
 
@@ -50,10 +52,17 @@ function RightMenuDrawer(props: RightMenuDrawerProps) {
 function RightMenuDrawerContent(props: DrawerContentComponentProps) {
   const theme = useTheme();
   const auth = useAuth();
+  const dispatch = useDispatch();
   const navigation = useNavigation();
   const signOut = () => {
     auth.signOut();
     navigation.goBack();
+    dispatch(
+      setSelectedModule({
+        id: undefined,
+        name: undefined,
+      }),
+    );
   };
   return (
     <View style={{marginTop: 80, width: '80%', height: '100%'}}>
