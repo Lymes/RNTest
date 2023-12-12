@@ -8,16 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* IrisTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* IrisTests.m */; };
+		052D44352E6C4C8C9BFD16B2 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B372A608646C9B2EA5E51 /* SFProText-Bold.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-Iris.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-Iris.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5FEE02C2F1FD403DB1FA0D31 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B69B566D8A2467393EB1FFE /* SFProText-Regular.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-Iris-IrisTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Iris-IrisTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		052D44352E6C4C8C9BFD16B2 /* SFProText-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F7B372A608646C9B2EA5E51 /* SFProText-Bold.ttf */; };
-		F295A2F8CE844A9791D315EF /* SFProText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4387DA06A0E64D4D85E2E6DE /* SFProText-Light.ttf */; };
 		F1D2216FD2CD4262B53908D1 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ED644BF0C95C4AC38B2F020A /* SFProText-Medium.ttf */; };
-		5FEE02C2F1FD403DB1FA0D31 /* SFProText-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B69B566D8A2467393EB1FFE /* SFProText-Regular.ttf */; };
+		F295A2F8CE844A9791D315EF /* SFProText-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4387DA06A0E64D4D85E2E6DE /* SFProText-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,17 +42,17 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Iris/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Iris-IrisTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Iris-IrisTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-Iris.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris.debug.xcconfig"; path = "Target Support Files/Pods-Iris/Pods-Iris.debug.xcconfig"; sourceTree = "<group>"; };
+		4387DA06A0E64D4D85E2E6DE /* SFProText-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Light.ttf"; path = "../assets/fonts/SFProText-Light.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-Iris.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris.release.xcconfig"; path = "Target Support Files/Pods-Iris/Pods-Iris.release.xcconfig"; sourceTree = "<group>"; };
+		5B69B566D8A2467393EB1FFE /* SFProText-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Regular.ttf"; path = "../assets/fonts/SFProText-Regular.ttf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-Iris-IrisTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.debug.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-Iris.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Iris.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A1ECF42B12718200EC26A0 /* Iris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Iris.entitlements; path = Iris/Iris.entitlements; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Iris/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Iris-IrisTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Iris-IrisTests.release.xcconfig"; path = "Target Support Files/Pods-Iris-IrisTests/Pods-Iris-IrisTests.release.xcconfig"; sourceTree = "<group>"; };
+		8F7B372A608646C9B2EA5E51 /* SFProText-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Bold.ttf"; path = "../assets/fonts/SFProText-Bold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		8F7B372A608646C9B2EA5E51 /* SFProText-Bold.ttf */ = {isa = PBXFileReference; name = "SFProText-Bold.ttf"; path = "../assets/fonts/SFProText-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		4387DA06A0E64D4D85E2E6DE /* SFProText-Light.ttf */ = {isa = PBXFileReference; name = "SFProText-Light.ttf"; path = "../assets/fonts/SFProText-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		ED644BF0C95C4AC38B2F020A /* SFProText-Medium.ttf */ = {isa = PBXFileReference; name = "SFProText-Medium.ttf"; path = "../assets/fonts/SFProText-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		5B69B566D8A2467393EB1FFE /* SFProText-Regular.ttf */ = {isa = PBXFileReference; name = "SFProText-Regular.ttf"; path = "../assets/fonts/SFProText-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		ED644BF0C95C4AC38B2F020A /* SFProText-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProText-Medium.ttf"; path = "../assets/fonts/SFProText-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -525,7 +525,7 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Iris will discover ICC gateways in the local network.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -565,7 +565,7 @@
 				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Iris will discover ICC gateways in the local network.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Iris will configure WiFi of the ICC gateway via Bluetooth";
-				INFOPLIST_KEY_UILaunchStoryboardName = " LaunchScreen";
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
